@@ -11,6 +11,8 @@ import efg.bank.AccountOffice;
  *
  * @author mistermartin75
  */
+
+// arno edit: hee faggot je moet het wel in efg.hoewehetooknoemen.iets stoppen. Dit breekt waarschijnlijk vanalles.
 public class TransactieOverzicht
 {
 	AccountOffice ao;
