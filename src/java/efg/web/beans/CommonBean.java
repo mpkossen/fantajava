@@ -7,7 +7,7 @@ package efg.web.beans;
 
 /**
  *
- * @author Bami (with code taken from Eric Gerlofsma example)
+ * @author Bami (with code taken from Eric Gerlofsma example) [you stealing bastard]
  */
 
 public class CommonBean
