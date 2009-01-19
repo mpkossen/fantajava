@@ -18,6 +18,7 @@ public class TransactieOverzicht
 {
 	AccountOffice ao;
 	private String[][] transacties;
+	String soort, bedrag;
 	
 	public TransactieOverzicht(AccountOffice ao)
 	{
@@ -25,11 +26,11 @@ public class TransactieOverzicht
 		transacties = ao.getPendingTransacties();
 		for(int i = 0; i < transacties.length; i++)
 		{
-			// Display transacties[i][i]
-			// Dit moet op een of andere manier naar een jsp gedumpt worden
-
-			// Dit is denk ik niet nodig, maar ik weet niet hoe die array er uit gaat zien
-			// for(int j = 0; j < transacties.length; j++)
+			String soort = transacties[i][1];
+			String bedrag = transacties[i][2];
+			/*
+			 * Bovenstaande moet op een of andere manier naar de JSP gaan
+			 */
 		}
 	}
 }

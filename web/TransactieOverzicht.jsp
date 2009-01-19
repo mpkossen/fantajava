@@ -20,7 +20,19 @@
             </div>
 
             <div id="content">
-                content
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>Soort transactie</td>
+                        <td>Bedrag</td>
+                    </tr>
+                    /*
+                     * Hier komt een loop voor de pending transactie's
+                     */
+                    <tr>
+                        <td>${TransactieOverzicht.soort}</td>
+                        <td>${TransactieOverzicht.bedrag}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>
