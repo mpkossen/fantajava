@@ -14,5 +14,14 @@
     </head>
     <body>
         <h1>Hello World! This is your Transactieoverzicht, no idea what that means, really, but it should display some really fancy numbers. The fact that you're seeing this means it isn't working (yet). Please call you system administrator, Arno Becker, to fix the problem.</h1>
+        <div id="content_container">
+            <div id="sidebar">
+                sidebar
+            </div>
+
+            <div id="content">
+                content
+            </div>
+        </div>
     </body>
 </html>
