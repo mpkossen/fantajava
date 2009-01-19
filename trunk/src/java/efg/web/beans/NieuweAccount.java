@@ -13,10 +13,14 @@ import efg.bank.AccountManager;
  */
 public class NieuweAccount {
     // variable declaratie
-    AccountManager am;
+    AccountManager accMan;
     
     public NieuweAccount(AccountManager am) {
-	
+	accMan = am;
+    }
+    
+    public boolean voegNieuweAccountToe() {
+	return false;
     }
 	
 }
