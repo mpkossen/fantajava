@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package beans;
+package abcbank.beans;
 
 import efg.jpa.bank.AccountOffice;
 

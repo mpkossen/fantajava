@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package beans;
+package abcbank.beans;
 
 import efg.jpa.bank.AccountManager;
 import java.util.logging.Level;
@@ -13,11 +13,11 @@ import java.util.logging.Logger;
  *
  * @author Bami
  */
-public class NieuweAccount extends CommonBean{
+public class NieuweAccountBoon extends CommonBean{
     // variable declaratie
     AccountManager accMan;
     
-    public NieuweAccount(AccountManager am) {
+    public NieuweAccountBoon(AccountManager am) {
 	accMan = am;
 	if (accMan == null) {
 	    String username = ""+""+100000;
@@ -36,7 +36,7 @@ public class NieuweAccount extends CommonBean{
 	try {
 	    accMan.newAccount(limit, name, pincode);
 	} catch (Exception ex) {
-	    Logger.getLogger(NieuweAccount.class.getName()).log(Level.SEVERE, null, ex);
+	    Logger.getLogger(NieuweAccountBoon.class.getName()).log(Level.SEVERE, null, ex);
 	} 
 	return false;
     }
