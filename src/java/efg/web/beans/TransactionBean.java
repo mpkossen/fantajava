@@ -1,13 +1,14 @@
-/*package java.efg.web.beans;
+package efg.web.beans;
 
-import javax.faces.event.ActionEvent;
+import javax.faces.event.*;
+import javax.faces.context.*;
+
 
 public class TransactionBean extends CommonBean {
-	
-	protected ExternalContext ex = FacesContext.getCurrentInstance()
-	.getExternalContext();
-protected double amount;
-protected String number = null;
+
+	protected ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
+	protected double amount;
+	protected String number = null;
 
 	public boolean validate() throws Exception {
 		System.out.println("TransactionBean.validate()");
@@ -62,4 +63,4 @@ protected String number = null;
 							+ e.getMessage());
 		}
 	}
-}*/
+}
