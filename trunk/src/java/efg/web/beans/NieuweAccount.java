@@ -25,7 +25,7 @@ public class NieuweAccount {
 	    String password = "geheim";
 	    String salt = "" + System.currentTimeMillis();
 	    try {
-		accMan = new AccountManager(username, efg.bank.util.MD5.encode(efg.bank.util.MD5.hash(password+salt)),salt);
+		accMan = new AccountManager(username, efg.jpa.bank.util.MD5.encode(efg.jpa.bank.util.MD5.hash(password+salt)),salt);
 	    }
 	    catch(Exception e) {
 		System.out.println(e);
