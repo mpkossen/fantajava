@@ -1,4 +1,4 @@
-package abc.bank.beans;
+package abcbank.beans;
 
 import java.security.Principal;
 

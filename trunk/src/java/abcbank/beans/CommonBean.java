@@ -1,4 +1,4 @@
-package abc.bank.beans;
+package abcbank.beans;
 
 import javax.persistence.EntityManager;
 import abc.bank.jaas.BankLoginModule;
