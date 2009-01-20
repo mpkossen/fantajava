@@ -10,7 +10,7 @@
 <jsp:include page="includes/header.html" />
 <div class="topdiv"><br />
 <jsp:include page="includes/sidebar.jsp" >
-    <jsp:param name="type" value="manager" />
+    <jsp:param name="type" value="gebruiker" />
 </jsp:include>
             <div id="content">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -18,6 +18,7 @@
                         <td>Soort transactie</td>
                         <td>Bedrag</td>
                     </tr>
+                    
                     /*
                      * Hier komt een loop voor de pending transactie's
                      */
