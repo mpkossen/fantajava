@@ -1,4 +1,4 @@
-package abc.bank.beans;
+package abcbank.beans;
 
 import java.util.HashSet;
 import java.util.Set;

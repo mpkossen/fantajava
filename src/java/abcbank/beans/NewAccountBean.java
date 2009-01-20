@@ -1,4 +1,4 @@
-package abc.bank.beans;
+package abcbank.beans;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

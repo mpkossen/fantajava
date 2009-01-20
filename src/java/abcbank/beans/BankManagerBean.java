@@ -1,4 +1,4 @@
-package abc.bank.beans;
+package abcbank.beans;
 // Xiabili Xiahilil
 
 import javax.faces.application.FacesMessage;
