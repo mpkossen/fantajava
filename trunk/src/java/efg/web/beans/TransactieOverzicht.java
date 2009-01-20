@@ -5,7 +5,7 @@
 
 package efg.web.beans;
 
-import efg.bank.AccountOffice;
+import efg.jpa.bank.AccountOffice;
 
 /**
  *
