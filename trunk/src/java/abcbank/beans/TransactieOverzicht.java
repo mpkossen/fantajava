@@ -16,13 +16,22 @@ import efg.jpa.bank.AccountOffice;
 // Done
 public class TransactieOverzicht
 {
-	AccountOffice ao;
+	private ExternalContext ex;
+	private MyPrincipal mp;
+	private AccountOffice ao;
+	
+	
 	private String[][] transacties;
 	public String soort = "foo";
 	public String bedrag;
 	
 	public TransactieOverzicht(AccountOffice ao)
 	{
+		
+		ex = FacesContext.getCurrentInstance().getExternalContext();
+		mp = (MyPrincipal) ex.getUserPrincipal();
+		ao = mp.getAccountOffice();
+		
 		soort = "foo";
 
 		this.ao = ao;

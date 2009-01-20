@@ -16,7 +16,7 @@ public class CommonBean {
 	 * Static
 	 **************************************************************************/
 	private static final long serialVersionUID = 1L;
-	private static String header = "EFG - BANK";
+	private static String header = "ABC - BANK";
 	private String message = "message";
 	private String exception = "exception";
 	private String footer = "footer";
