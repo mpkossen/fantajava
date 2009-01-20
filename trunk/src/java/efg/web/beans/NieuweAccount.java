@@ -6,7 +6,6 @@
 package efg.web.beans;
 
 import efg.jpa.bank.AccountManager;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Bami
  */
-public class NieuweAccount {
+public class NieuweAccount extends CommonBean{
     // variable declaratie
     AccountManager accMan;
     
