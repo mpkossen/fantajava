@@ -13,7 +13,7 @@
 
 
 
-<div class="body">
+<div id="content">
 
 <form action="klant_overzicht.html">
 

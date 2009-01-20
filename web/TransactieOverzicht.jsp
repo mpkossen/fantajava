@@ -7,18 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Transactieoverzicht</title>
-    </head>
-    <body>
-        <h1>Hello World! This is your Transactieoverzicht, I'm Maarten Kossen and I suck cock!</h1>
-        <div id="content_container">
-            <div id="sidebar">
-                sidebar
-            </div>
-
+<jsp:include page="includes/header.html" />
+<div class="topdiv"><br />
+<jsp:include page="includes/sidebar.jsp" >
+    <jsp:param name="type" value="manager" />
+</jsp:include>
             <div id="content">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -34,6 +27,5 @@
                     </tr>
                 </table>
             </div>
-        </div>
-    </body>
-</html>
+</div>
+<jsp:include page="includes/footer.html" />
