@@ -1,18 +1,13 @@
-/*package abcbank.beans;
+package abcbank.beans;
+
 
 import javax.faces.event.*;
 import javax.faces.context.*;
 
+import efg.jpa.bank.AccountOffice;
 
 public class TransactionBean extends CommonBean {
 
-	
-	
-	public void doOpnemen() {
-		System.out.println("doOpnemen()");
-		
-	}
-	
 	protected ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
 	protected double amount;
 	protected String number = null;
@@ -70,4 +65,4 @@ public class TransactionBean extends CommonBean {
 							+ e.getMessage());
 		}
 	}
-}*/
+}

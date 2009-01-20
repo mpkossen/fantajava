@@ -1,4 +1,4 @@
-package efg.web.jaas;
+package abcbank.jaas;
 
 import javax.security.auth.callback.NameCallback;
 
