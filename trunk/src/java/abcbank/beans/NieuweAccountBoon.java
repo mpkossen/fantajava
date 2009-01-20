@@ -5,9 +5,13 @@
 
 package abcbank.beans;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+
 import efg.jpa.bank.AccountManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -15,11 +19,16 @@ import java.util.logging.Logger;
  */
 public class NieuweAccountBoon extends CommonBean{
     // variable declaratie
-    AccountManager accMan;
+    private AccountManager accMan;
+    private String ErrorMessage = "";
+    private FacesContext Context = FacesContext.getCurrentInstance();
     
     public NieuweAccountBoon(AccountManager am) {
+	System.out.println("NieuweAccountBoon("+am+");");
 	accMan = am;
+	// temp hack, word afgevangen met exception als er ook daadwerkelijk iemand is ingelogd.
 	if (accMan == null) {
+	    System.out.println("AccountManager null: tijdelijke gebruiker instellen");
 	    String username = ""+""+100000;
 	    String password = "geheim";
 	    String salt = "" + System.currentTimeMillis();
@@ -32,13 +41,11 @@ public class NieuweAccountBoon extends CommonBean{
 	}
     }
     
-    public boolean voegNieuweAccountToe(Double limit, String name, String pincode ) {
-	try {
-	    accMan.newAccount(limit, name, pincode);
-	} catch (Exception ex) {
-	    Logger.getLogger(NieuweAccountBoon.class.getName()).log(Level.SEVERE, null, ex);
-	} 
-	return false;
+    public void doeNieuweAccount(ActionEvent AE ) {
+	System.out.println("doeNieuweAccount()"); 
+	if(limiet.equals("")) {
+	    
+	}
     }
 	
 }

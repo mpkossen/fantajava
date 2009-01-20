@@ -1,4 +1,4 @@
-package abcbank.beans;
+/*package abcbank.beans;
 
 import javax.faces.event.*;
 import javax.faces.context.*;
@@ -70,4 +70,4 @@ public class TransactionBean extends CommonBean {
 							+ e.getMessage());
 		}
 	}
-}
+}*/
