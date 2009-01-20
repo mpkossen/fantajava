@@ -1,18 +1,20 @@
 package java.efg.web.beans;
 
-import javax.faces.event.ActionEvent; 
+import javax.faces.event.ActionEvent;
 
-public class TransactionBean extends CommonBean
-
-{
+public class TransactionBean extends CommonBean {
+	
+	protected ExternalContext ex = FacesContext.getCurrentInstance()
+	.getExternalContext();
+protected double amount;
+protected String number = null;
 
 	public boolean validate() throws Exception {
 		System.out.println("TransactionBean.validate()");
-
 	}
 
 	public void doOpnemen(ActionEvent ae) {
-		System.out.println("OverboekenBean - doOverboeking()");
+		System.out.println("TransactionBean.doOverboeking()");
 		try {
 			System.out.println("Opnemen - " + number + ", " + amount);
 			((MyPrincipal) ex.getUserPrincipal()).getAccountOffice().transfer(
@@ -21,13 +23,13 @@ public class TransactionBean extends CommonBean
 			amount = 0.0;
 		} catch (BankException e) {
 			System.err
-					.println("OverboekenBean - doOverboeking() - BankException: "
+					.println("TransactionBean.doOverboeking() - BankException: "
 							+ e.getMessage());
 		}
 	}
 
 	public void doOverboeking(ActionEvent ae) {
-		System.out.println("OverboekenBean - doOverboeking()");
+		System.out.println("TransactionBean.doOverboeking()");
 		try {
 			System.out.println("overboeking - " + number + ", " + amount);
 			((MyPrincipal) ex.getUserPrincipal()).getAccountOffice().transfer(
@@ -36,7 +38,7 @@ public class TransactionBean extends CommonBean
 			amount = 0.0;
 		} catch (BankException e) {
 			System.err
-					.println("OverboekenBean - doOverboeking() - BankException: "
+					.println("TransactionBean.doOverboeking() - BankException: "
 							+ e.getMessage());
 		}
 	}
@@ -47,7 +49,7 @@ public class TransactionBean extends CommonBean
 	}
 
 	public void doStorten(ActionEvent ae) {
-		System.out.println("StortenBean - doStorten()");
+		System.out.println("TransactionBean.doStorten()");
 		try {
 			System.out.println("storten - " + number + ", " + amount);
 			((MyPrincipal) ex.getUserPrincipal()).getAccountOffice().transfer(
@@ -56,7 +58,7 @@ public class TransactionBean extends CommonBean
 			amount = 0.0;
 		} catch (BankException e) {
 			System.err
-					.println("OverboekenBean - doOverboeking() - BankException: "
+					.println("TransactionBean.doOverboeking() - BankException: "
 							+ e.getMessage());
 		}
 	}
