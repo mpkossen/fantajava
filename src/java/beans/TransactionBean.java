@@ -1,4 +1,4 @@
-package efg.web.beans;
+package beans;
 
 import javax.faces.event.*;
 import javax.faces.context.*;
