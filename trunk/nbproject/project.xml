@@ -12,7 +12,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library files="1">
-                    <file>${file.reference.ABC-BANK.jar}</file>
+                    <file>${file.reference.ABC-BANK-JPA.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

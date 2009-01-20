@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package efg.web.beans;
+package beans;
 
 import efg.jpa.bank.AccountManager;
 import java.util.logging.Level;
