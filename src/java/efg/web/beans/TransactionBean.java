@@ -6,6 +6,13 @@ import javax.faces.context.*;
 
 public class TransactionBean extends CommonBean {
 
+	
+	
+	public void doOpnemen() {
+		System.out.println("doOpnemen()");
+		
+	}
+	
 	protected ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
 	protected double amount;
 	protected String number = null;
