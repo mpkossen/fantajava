@@ -1,4 +1,4 @@
-package java.efg.web.beans;
+/*package java.efg.web.beans;
 
 import javax.faces.event.ActionEvent;
 
@@ -62,4 +62,4 @@ protected String number = null;
 							+ e.getMessage());
 		}
 	}
-}
+}*/
