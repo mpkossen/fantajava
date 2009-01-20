@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="H:/Java/ABC-BANK-JPA.jar"/>
+	<classpathentry kind="lib" path="H:/Java/toplink-essentials.jar"/>
+	<classpathentry kind="lib" path="H:/Java/toplink-essentials-agent.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
