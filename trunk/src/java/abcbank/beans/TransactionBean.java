@@ -1,4 +1,4 @@
-package beans;
+package abcbank.beans;
 
 import javax.faces.event.*;
 import javax.faces.context.*;
