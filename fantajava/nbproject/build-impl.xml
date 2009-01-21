@@ -528,11 +528,23 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,-do-dist-with-manifest,-do-dist-without-manifest" name="do-dist"/>
     <target depends="init" if="dist.ear.dir" name="library-inclusion-in-manifest">
+        <basename file="${file.reference.ABC-BANK-JPA.jar}" property="included.lib.file.reference.ABC-BANK-JPA.jar"/>
+        <copy-ear-war file="${file.reference.ABC-BANK-JPA.jar}" propname="included.lib.file.reference.ABC-BANK-JPA.jar.X"/>
+        <basename file="${libs.toplink.classpath.libfile.2}" property="included.lib.libs.toplink.classpath.2"/>
+        <basename file="${libs.toplink.classpath.libfile.1}" property="included.lib.libs.toplink.classpath.1"/>
+        <copy-ear-war file="${libs.toplink.classpath.libfile.2}" propname="included.lib.libs.toplink.classpath.2.X"/>
+        <copy-ear-war file="${libs.toplink.classpath.libfile.1}" propname="included.lib.libs.toplink.classpath.1.X"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
-        <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
+        <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
+            <attribute name="Class-Path" value="${included.lib.file.reference.ABC-BANK-JPA.jar} ${included.lib.libs.toplink.classpath.1.X} ${included.lib.libs.toplink.classpath.2.X} "/>
+        </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
-    <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir"/>
+    <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
+        <copy file="${file.reference.ABC-BANK-JPA.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.toplink.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.toplink.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
+    </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>
         <mkdir dir="${dist.jar.dir}"/>
