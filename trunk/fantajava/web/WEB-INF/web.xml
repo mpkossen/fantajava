@@ -27,6 +27,22 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-	<welcome-file>index.jsp</welcome-file>
+        <welcome-file>Login.jsp</welcome-file>
     </welcome-file-list>
-</web-app>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name/>
+        <form-login-config>
+            <form-login-page>/Login.jsp</form-login-page>
+            <form-error-page/>
+            </form-login-config>
+        </login-config>
+    <security-role>
+        <description>Kan zijn eigen rekening bekijken en transacties plegen</description>
+        <role-name>Klant</role-name>
+    </security-role>
+    <security-role>
+        <description>Kan de bank sluiten/openen, accounts maken</description>
+        <role-name>Beheerder</role-name>
+    </security-role>
+    </web-app>
