@@ -11,7 +11,7 @@
    <h:inputText  id="input-bedrag"  value="#{TransactionB.amount}"  required="true"  valueChangeListener="#{TransactionB.setAmount}"/> </td> </tr> 
    <tr> <td>Van rekening</td> 
    <td><h:outputText value="#{TransactionB.rekeningNummer}" /> </td> </tr> 
-   </table> <h:commandButton id="cmd-opnemen" type="submit" styleClass="knop" value="versturen >" actionListener="#{TransactionB.doTransaction}" /> 
+   </table> <h:commandButton id="cmd-opnemen" type="submit" styleClass="knop" value="Neem Op!" actionListener="#{TransactionB.doTransaction}" /> 
    </h:form> 
    </h:panelGroup>  
    
@@ -28,7 +28,7 @@
 	<td>Op rekening</td> 
 	<td><h:outputText value="#{TransactionB.rekeningNummer}" /> </td> 
 	</tr> </table> 
-	<h:commandButton id="cmd-opnemen" type="submit" styleClass="knop" value="versturen >" actionListener="#{TransactionB.doStorten}" /> 
+	<h:commandButton id="cmd-opnemen" type="submit" styleClass="knop" value="Stort!" actionListener="#{TransactionB.doStorten}" /> 
 	</h:form> 
 	</h:panelGroup> 
 
@@ -44,8 +44,8 @@
 	<h:inputText  id="input-bedrag"  value="#{TransactionB.amount}"  required="true"  valueChangeListener="#{TransactionB.changeAmount}"/> </td> </tr> <tr> <td>Van rekening</td> 
 	<td><h:outputText value="#{TransactionB.rekeningNummer}" /> </td> </tr> 
 	<tr> <td>Naar rekening</td> 
-	<td> <h:inputText  id="input-naar-rekening"  value="#{TransactionB.number}"  required="true" valueChangeListener="#{TransactionB.changeNumber}"/>  
+	<td> <h:inputText  id="input-naar-rekening"  value="#{TransactionB.tegenrekening}"  required="true" valueChangeListener="#{TransactionB.changeTegenrekening}"/>  
 	</td> </tr> </table> 
-	<h:commandButton id="cmd-overboeken" type="submit" styleClass="knop" value="versturen >" actionListener="#{TransactionB.doOverboeking}" /> 
+	<h:commandButton id="cmd-overboeken" type="submit" styleClass="knop" value="Boek Over!" actionListener="#{TransactionB.doOverboeking}" /> 
 	</h:form> 
 	</h:panelGroup> 
