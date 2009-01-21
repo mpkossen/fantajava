@@ -25,7 +25,6 @@
 	<div class="sidebar"></div>
 	
 	<div class="body">
-	    <body>
 	    <h1>Login</h1>
 	    <form action="j_security_check" method="post">
 		<dl>
