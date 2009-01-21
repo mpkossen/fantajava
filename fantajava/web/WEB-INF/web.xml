@@ -17,11 +17,16 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <description>Boontje voor een nieuwe account</description>
+        <servlet-name>NewAccount</servlet-name>
+        <servlet-class>beans.NewAccountBean</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
-    <session-config>
+    <servlet-mapping><servlet-name>NewAccount</servlet-name><url-pattern>/NewAccount</url-pattern></servlet-mapping><session-config>
 	<session-timeout>
             30
         </session-timeout>
@@ -29,14 +34,6 @@
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>
     </welcome-file-list>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name/>
-        <form-login-config>
-            <form-login-page>/Login.jsp</form-login-page>
-            <form-error-page/>
-            </form-login-config>
-        </login-config>
     <security-role>
         <description>Kan zijn eigen rekening bekijken en transacties plegen</description>
         <role-name>Klant</role-name>
