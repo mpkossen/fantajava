@@ -21,7 +21,6 @@ public class TransactieBean {
 		ex = FacesContext.getCurrentInstance().getExternalContext();
 		mp = (MyPrincipal) ex.getUserPrincipal();
 		ao = mp.getAccountOffice();
-
 	}
 
 	public void doTransaction() {
