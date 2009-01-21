@@ -6,6 +6,7 @@
 package abcbank.beans;
 
 import efg.jpa.bank.AccountOffice;
+import abcbank.jaas.*;
 
 /**
  *

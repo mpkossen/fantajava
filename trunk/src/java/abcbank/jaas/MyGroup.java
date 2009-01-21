@@ -56,6 +56,7 @@ implements Group
 
   }
 
+    @Override
   public boolean equals(Object o)
   {
     boolean ret = false;
