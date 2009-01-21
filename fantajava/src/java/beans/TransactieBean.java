@@ -1,7 +1,8 @@
-package abcbank.beans;
+package beans;
 
+import jaas.MyPrincipal;
 import efg.jpa.bank.AccountOffice;
-import abcbank.jaas.MyPrincipal;
+
 
 public class TransactieBean {
 
@@ -11,7 +12,9 @@ public class TransactieBean {
 
 	private AccountOffice ao;
 
-	public String bedrag;
+	public double amount;
+	
+	public String tegenrekening = null;
 
 	public TransactieBean() {
 
@@ -20,12 +23,32 @@ public class TransactieBean {
 		ao = mp.getAccountOffice();
 
 	}
-	
-	public void doTransaction(String tegenrekening, double bedrag) {
-		if(tegenrekening.equals("")) {
-			tegenrekening = null;
-		}
-		ao.transfer(tegenrekening, bedrag);
+
+	public void doTransaction() {
+		ao.transfer(tegenrekening, amount);
 	}
 	
+	public void changeAmount(String amount) {	
+		try {
+			this.amount = Double.parseDouble(amount);
+		}
+		catch(Exception e) {
+			System.out.println("Er ging iets fout met het bedrag!");
+		}	
+	}
+	
+	public void changeTegenrekening(String rekening) {	
+		if(rekening.equals("")) {
+			this.tegenrekening = null;
+		}
+		else {
+			try {
+				int i = Integer.parseInt(rekening);
+				this.tegenrekening = rekening;	
+			}
+			catch(Exception e) {
+				System.out.println("Er ging iets fout met de tegenrekening!");
+			}
+		}
+	}
 }
