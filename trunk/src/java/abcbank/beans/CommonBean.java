@@ -1,7 +1,7 @@
 package abcbank.beans;
 
 import javax.persistence.EntityManager;
-import abc.bank.jaas.BankLoginModule;
+import abcbank.jaas.BankLoginModule;
 import efg.jpa.bank.db.Database;
 import efg.jpa.bank.db.Status;
 
