@@ -4,4 +4,6 @@
     Author     : Vincent
 --%>
 
+<jsp:include page="/fragments/header.jsp" flush="true"></jsp:include>
 <jsp:include page="/fragments/form-newaccount.jsp" flush="true"></jsp:include>
+<jsp:include page="/fragments/footer.jsp" flush="true"></jsp:include>
