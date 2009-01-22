@@ -51,6 +51,8 @@ public class ABCLoginModule implements LoginModule {
     \*************************************************************************/
     public boolean login()
 	    throws LoginException {
+	System.out.println("BankLoginModule.login()");
+
 	boolean ret = false;
 	MyNameCallback nc = new MyNameCallback("User name: ", "guest");
 	MyPasswordCallback pc = new MyPasswordCallback("Password: ", false);
