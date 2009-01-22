@@ -1,7 +1,10 @@
 package beans;
 
+import efg.jpa.bank.BankException;
 import jaas.MyPrincipal;
 import efg.jpa.bank.AccountOffice;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 
 public class TransactionBean {
@@ -25,7 +28,7 @@ public class TransactionBean {
 		ao = mp.getAccountOffice();
 	}
 
-	public void doTransaction() {
+	public void doTransaction() throws BankException {
 		ao.transfer(tegenrekening, amount);
 	}
 	
