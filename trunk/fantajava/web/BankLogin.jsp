@@ -23,7 +23,7 @@
 	<div class="sidebar"></div>
 	
 	<div class="body">
-	    
+	    <jsp:include page="/fragments/form-login.jsp" flush="true"></jsp:include>
 	</div>
     </body>
 </html>

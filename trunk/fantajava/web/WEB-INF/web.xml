@@ -24,11 +24,12 @@
 </security-constraint>
 
 <security-constraint>
-  <display-name>access</display-name>
+  <display-name>login</display-name>
   <web-resource-collection>
-         <web-resource-name>BankAccess</web-resource-name>
-        <url-pattern>/BankAccess.faces</url-pattern>
-        <url-pattern>/Bank.faces</url-pattern>
+         <web-resource-name>BankLogin</web-resource-name>
+            <description/>
+            <url-pattern>/BankLogin.faces</url-pattern>
+            <url-pattern>/Bank.faces</url-pattern>
   </web-resource-collection>
   <auth-constraint>
    <role-name>Beheerder</role-name>
@@ -52,7 +53,7 @@
         <realm-name/>
         <form-login-config>
             <form-login-page>/BankLogin.faces</form-login-page>
-            <form-error-page>/BankLogin.faces</form-error-page>
+            <form-error-page>/error.html</form-error-page>
             </form-login-config>
         </login-config>
     <security-role>
