@@ -20,7 +20,7 @@
     <servlet>
         <description>Boontje voor een nieuwe account</description>
         <servlet-name>NewAccount</servlet-name>
-        <servlet-class>beans.NewAccountBean</servlet-class>
+        <servlet-class>beans.AccountManagerBean</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
