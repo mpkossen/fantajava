@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 public class CommonBean extends HashMap<String, Object>
 {
 
-        private static String header = "ABC - BANK";
 	private String message = "message";
 	private String exception = "exception";
-	private String footer = "footer";
 
 	public CommonBean ()
 	{
@@ -31,11 +29,6 @@ public class CommonBean extends HashMap<String, Object>
                 }
         }
 
-	public String getHeader ()
-	{
-		System.out.println("CommonBean.getHeader()");
-		return header;
-	}
 
 	public String getMessage ()
 	{
@@ -47,18 +40,6 @@ public class CommonBean extends HashMap<String, Object>
 	{
 		System.out.println("CommonBean.getException()");
 		return exception;
-	}
-
-	public String getFooter ()
-	{
-		System.out.println("CommonBean.getFooter()");
-		return footer;
-	}
-
-	public void setHeader (String newHeader)
-	{
-		System.out.println("CommonBean.setHeader(" + newHeader + ")");
-		header = newHeader;
 	}
 
 	public void setMessage (String newMessage)
@@ -73,11 +54,6 @@ public class CommonBean extends HashMap<String, Object>
 		exception = newException;
 	}
 
-	public void setFooter (String newFooter)
-	{
-		System.out.println("CommonBean.setFooter(" + newFooter + ")");
-		footer = newFooter;
-	}
 
 	@Override
 	protected void finalize () throws Throwable
