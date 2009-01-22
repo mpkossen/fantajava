@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author kalizec
+ * @author kalizec <- stop met het jatten van ander mans werk >:( - arno
  */
 public class AccountManagerBean extends CommonBean
 {
