@@ -43,3 +43,9 @@ display: block
 	position: absolute;
 	text-align: right;
 }
+/* Footer */
+.bottomdiv {
+        background-image: url("/resource/bottombanner.png");
+        position: relative;
+        background-repeat: no-repeat;
+}
