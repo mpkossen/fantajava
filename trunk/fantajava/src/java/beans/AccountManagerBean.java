@@ -15,6 +15,9 @@ public class AccountManagerBean extends CommonBean
 		return ID++;
 	}
 	private int id = getId();
+        private double newLimit = 0;
+        private String newName = "";
+        private String newPincode = "";
         private AccountManager accountManager = null;
 	private HttpSession session = null;
 
@@ -92,6 +95,44 @@ public class AccountManagerBean extends CommonBean
 		return accountManager.setOpen(b);
 	}
 
+ /**
+  * Setters voor de nieuwe account
+  * @param limit    de nieuwe limitatie
+  * @param name     de nieuwe naam
+  * @param pincode  de nieuwe pincode
+  */
+
+        public void setNewLimit(double limit){
+            newLimit = limit;
+        }
+
+        public void setNewName(String name){
+            newName = name;
+        }
+
+        public void setNewPincode(String pincode){
+            newPincode = pincode;
+        }
+
+ /**
+  * Getters voor de nieuwe account
+  * @param newLimit    de nieuwe limitatie
+  * @param newName     de nieuwe naam
+  * @param newPincode  de nieuwe pincode
+  */
+
+        public double getLimit(){
+            return newLimit;
+        }
+
+        public String getName(){
+            return newName;
+        }
+
+        public String getPincode() {
+            return newPincode;
+        }
+
 /**
  * Maakt een nieuwe rekening aan.
  * @param newLimit		limiet van de rekening.
@@ -99,7 +140,9 @@ public class AccountManagerBean extends CommonBean
  * @param newPincode	pincode van de rekening.
  * @return				het nummer van de nieuwe aangemaakte rekening.
  */
-	public String newAccount (double newLimit, String newName, String newPincode)
+
+
+        public String newAccount ()
 	{
            if(newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)){
                 try{
