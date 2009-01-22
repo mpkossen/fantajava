@@ -1,20 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package beans;
 
-import efg.jpa.bank.AccountOffice;
 import efg.jpa.bank.AccountManager;
 import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseEvent;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author kalizec <- stop met het jatten van ander mans werk >:( - arno
- */
+
 public class AccountManagerBean extends CommonBean
 {
 	private static final long serialVersionUID = 1L;
@@ -25,11 +15,10 @@ public class AccountManagerBean extends CommonBean
 		return ID++;
 	}
 	private int id = getId();
-	private AccountOffice accountOffice = null;
         private AccountManager accountManager = null;
 	private HttpSession session = null;
 
-// <editor-fold desc="Constructors">
+
 	public AccountManagerBean ()
 	{
 		System.out.println("(" + id + ")LibraryManagerBean()");
@@ -37,11 +26,6 @@ public class AccountManagerBean extends CommonBean
 		if ( session != null )
 		{
 			setException("Id=" + id + ", sessionId=" + session.getId());
-			accountOffice = (AccountOffice) session.getAttribute("accountOffice");
-			if ( accountOffice != null )
-			{
-				return;
-			}
                         accountManager = (AccountManager) session.getAttribute("accountManager");
                         if ( accountManager != null )
 			{
@@ -57,21 +41,7 @@ public class AccountManagerBean extends CommonBean
 			System.out.println(e.getMessage());
 		}
 	}
-// </editor-fold>
 
-// <editor-fold desc="Callbacks">
-	public void beforePhase (PhaseEvent phaseEvent)
-	{
-		System.out.println("(" + id + ")AccountOfficeBean.beforePhase(" + phaseEvent.getPhaseId() + ")");
-	}
-
-	public void afterPhase (PhaseEvent phaseEvent)
-	{
-		System.out.println("AccountOfficeBean.afterPhase(" + phaseEvent.getPhaseId() + ")");
-	}
-// </editor-fold>
-
-// <editor-fold desc="Getters">
 /**
  * Geeft de status van de bank weer.
  * @return een status (string). De statusen:
@@ -82,7 +52,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public static String getStatus ()
 	{
-		return ""; // For compile reasons. To be removed later.
+		return efg.jpa.bank.AccountManager.getStatus(); 
 	}
 
 /**
@@ -93,7 +63,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public String[] getAccount (String number)
 	{
-		String[] ret = new String[1];	// For compile reasons. To be removed later.
+		String[] ret = accountManager.getAccount(number);
 		return ret;
 	}
 
@@ -106,12 +76,10 @@ public class AccountManagerBean extends CommonBean
  */
 	public String[][] getTransactions (String number)
 	{
-		String[][] ret = new String[1][1];	// For compile reasons. To be removed later.
+		String[][] ret = accountManager.getTransactions(number);	// For compile reasons. To be removed later.
 		return ret;
 	}
-// </editor-fold>
 
-// <editor-fold desc="Setters">
 /**
  * De status wordt gezet met boolean b (true/false). Als true dan is de stat
  * &= ~Status.CLOSED, anders is stat |= Status.CLOSED. Status.CLOSED is een
@@ -121,11 +89,9 @@ public class AccountManagerBean extends CommonBean
  */
 	public synchronized String setOpen (boolean b)
 	{
-		return ""; // For compile reasons. To be removed later.
+		return accountManager.setOpen(b);
 	}
-// </editor-fold>
 
-// <editor-fold desc="ActionListener Methods">
 /**
  * Maakt een nieuwe rekening aan.
  * @param newLimit		limiet van de rekening.
@@ -133,29 +99,27 @@ public class AccountManagerBean extends CommonBean
  * @param newPincode	pincode van de rekening.
  * @return				het nummer van de nieuwe aangemaakte rekening.
  */
-	public void newAccount (double newLimit, String newName, String newPincode)
+	public String newAccount (double newLimit, String newName, String newPincode)
 	{
-            try{
-            accountManager.newAccount(newLimit, newName, newPincode);
-            }
-            catch(Exception e) {
-                System.out.println("newAccount exception: " + e.getMessage());
-            } // For compile reasons. To be removed later.
+           if(newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)){
+                try{
+                accountManager.newAccount(newLimit, newName, newPincode);
+                }
+                catch(Exception e) {
+                    System.out.println("newAccount exception: " + e.getMessage());
+                }
+           }
+           else{
+            return "Mislukt";
+           }
+           return "";
 	}
-// </editor-fold>
 
-// <editor-fold desc="Validators">
-// </editor-fold>
-
-// <editor-fold desc="ValueChangeListeners">
-// </editor-fold>
-
-// <editor-fold desc="Finalize">
 	@Override
 	protected void finalize () throws Throwable
 	{
 		System.err.println("(" + id + ")AccountOfficeBean.finalize()");
 		super.finalize();
-	}// </editor-fold>
+	}
 
 }
