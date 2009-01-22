@@ -10,8 +10,13 @@
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
   <managed-bean>
+    <managed-bean-name>BankB</managed-bean-name>
+    <managed-bean-class>beans.BankBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
     <managed-bean-name>AccountManagerB</managed-bean-name>
     <managed-bean-class>beans.AccountManagerBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean> 
+  </managed-bean>
 </faces-config>

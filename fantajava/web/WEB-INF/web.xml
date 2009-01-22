@@ -1,39 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <context-param>
-        <param-name>com.sun.faces.verifyObjects</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>com.sun.faces.validateXml</param-name>
-        <param-value>true</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-        <param-value>client</param-value>
-    </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <description>Boontje voor een nieuwe account</description>
-        <servlet-name>NewAccount</servlet-name>
-        <servlet-class>beans.AccountManagerBean</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
-    <servlet-mapping><servlet-name>NewAccount</servlet-name><url-pattern>/NewAccount</url-pattern></servlet-mapping><session-config>
-	<session-timeout>
-            30
-        </session-timeout>
-    </session-config>
     <welcome-file-list>
-        <welcome-file>Login.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>manager</display-name>
+        <web-resource-collection>
+                <web-resource-name>BankManager</web-resource-name>
+                <url-pattern>/BankManager.faces</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+                <role-name>Beheerder</role-name>
+        </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+  <display-name>access</display-name>
+  <web-resource-collection>
+         <web-resource-name>BankAccess</web-resource-name>
+        <url-pattern>/BankAccess.faces</url-pattern>
+        <url-pattern>/Bank.faces</url-pattern>
+  </web-resource-collection>
+  <auth-constraint>
+   <role-name>Beheerder</role-name>
+   <role-name>Klant</role-name>
+  </auth-constraint>
+ </security-constraint>
+ 
+ <security-constraint>
+  <display-name>offices</display-name>
+  <web-resource-collection>
+   <web-resource-name>OfficeManager</web-resource-name>
+   <url-pattern>/BankOffice.faces</url-pattern>
+  </web-resource-collection>
+    <auth-constraint>
+   <role-name>Klant</role-name>
+  </auth-constraint>
+ </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name/>
+        <form-login-config>
+            <form-login-page>/BankLogin.faces</form-login-page>
+            <form-error-page>/BankLogin.faces</form-error-page>
+            </form-login-config>
+        </login-config>
     <security-role>
         <description>Kan zijn eigen rekening bekijken en transacties plegen</description>
         <role-name>Klant</role-name>
