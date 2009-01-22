@@ -2,12 +2,14 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="AccountManager.jsp" x="400" y="300" zoom="true"/>
-        <Node id="NewAccount.jsp" x="150" y="300" zoom="true"/>
-        <Node id="Transactions.jsp" x="650" y="150" zoom="true"/>
-        <Node id="BankAccess.jsp" x="150" y="450" zoom="true"/>
-        <Node id="welcomeJSF.jsp" x="400" y="150" zoom="true"/>
-        <Node id="Login.jsp" x="150" y="150" zoom="true"/>
+        <Node id="fragments/footer.jsp" x="400" y="300" zoom="true"/>
+        <Node id="BankLogin.jsp" x="83" y="19" zoom="false"/>
+        <Node id="index.html" x="150" y="150" zoom="true"/>
+        <Node id="fragments/form-login.jsp" x="900" y="150" zoom="true"/>
+        <Node id="NewAccount.jsp" x="400" y="150" zoom="true"/>
+        <Node id="Bank.jsp" x="99" y="161" zoom="true"/>
+        <Node id="fragments/header.jsp" x="650" y="150" zoom="true"/>
+        <Node id="fragments/form-newaccount.jsp" x="150" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
