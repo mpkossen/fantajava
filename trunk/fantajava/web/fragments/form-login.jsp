@@ -3,7 +3,7 @@
     Created on : 21-jan-2009, 23:48:58
     Author     : Bami
 --%>
-<f:subview id="subview-login">
+<f:subview id="form-login">
 <h1>Login</h1>
 <form action="j_security_check" method="post" action="j_security_check">
     <dl>
