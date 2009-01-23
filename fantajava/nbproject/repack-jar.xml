@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="abcbank-repack-jar" basedir=".." default="repack">
+	<property environment="env" />
+	<property name="oldjar" value="ABC-BANK-JPA.jar" />
+	<property name="newjar" value="ABC-BANK-JPA-new.jar" />
+	<property name="tmpdir" value="jar" />
+
+	<target name="repack">
+		<delete file="${newjar}" />
+		<unzip src="${oldjar}" dest="${tmpdir}" />
+		<delete file="${tmpdir}/META-INF/persistence.xml" />
+		<jar destfile="${newjar}" basedir="${tmpdir}">
+			<metainf dir="." includes="persistence.xml" />
+			<manifest>
+				<attribute name="Main-Class" value="efg.jpa.bank.Main" />
+			</manifest>
+		</jar>
+		<delete dir="${tmpdir}" />
+	</target>
+</project>

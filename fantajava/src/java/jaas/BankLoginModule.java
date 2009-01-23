@@ -21,7 +21,7 @@ import efg.jpa.bank.AccountOffice;
 
 import efg.jpa.bank.util.MD5;
 
-public class ABCLoginModule implements LoginModule {
+public class BankLoginModule extends beans.CommonBean implements LoginModule {
     // initial state
     private Subject subject = null;
     private Set<Principal> principals = null;
