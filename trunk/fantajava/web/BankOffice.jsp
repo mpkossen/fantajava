@@ -36,6 +36,10 @@
 	<h:panelGrid id="storten" columns="1" rendered="#{TransactionB.getRenderStorten}" >
 		<jsp:include page="transaction_storten.jsp" flush="true" />
 	</h:panelGrid>
+	<h:panelGrid id="overzicht" columns="1" rendered="#{TransactionB.getRenderOverzicht}" >
+		<jsp:include page="overview-transactions.jsp" flush="true" />
+	</h:panelGrid>
+	
 </f:subview>
 
 </div>
