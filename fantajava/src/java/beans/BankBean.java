@@ -24,14 +24,14 @@ public class BankBean
         public boolean getDisplayManager()
         {
 		System.out.println("BankBean.getDisplayManager()");
-                System.out.println(ec.isUserInRole("Klant"));
-                return ec.isUserInRole("Klant");
+                System.out.println(ec.isUserInRole("Manager"));
+                return ec.isUserInRole("Manager");
         }
        
         public boolean getDisplayOffice()
         {
                System.out.println("BankBean.getDisplayOffice()");
-                return ec.isUserInRole("Manager");
+                return ec.isUserInRole("Klant");
         }
 }
 
