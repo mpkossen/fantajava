@@ -28,16 +28,16 @@
 
 <f:subview id="subview-choice">
 	<h:panelGrid id="opnemen" columns="1" rendered="#{TransactionB.getRenderOpnemen}" >
-		<jsp:include page="transaction_opnemen.jsp" flush="true" />
+		<jsp:include page="/fragments/transaction_opnemen.jsp" flush="true" />
 	</h:panelGrid>
 	<h:panelGrid id="overboeken" columns="1" rendered="#{TransactionB.getRenderOverboeken}" >
-		<jsp:include page="transaction_overboeken.jsp" flush="true" />
+		<jsp:include page="/fragments/transaction_overboeken.jsp" flush="true" />
 	</h:panelGrid>
 	<h:panelGrid id="storten" columns="1" rendered="#{TransactionB.getRenderStorten}" >
-		<jsp:include page="transaction_storten.jsp" flush="true" />
+		<jsp:include page="/fragments/transaction_storten.jsp" flush="true" />
 	</h:panelGrid>
 	<h:panelGrid id="overzicht" columns="1" rendered="#{TransactionB.getRenderOverzicht}" >
-		<jsp:include page="overview-transactions.jsp" flush="true" />
+		<jsp:include page="/fragments/overview-transactions.jsp" flush="true" />
 	</h:panelGrid>
 	
 </f:subview>
