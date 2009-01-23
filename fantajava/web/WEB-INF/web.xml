@@ -31,11 +31,12 @@
             <url-pattern>/BankLogin.faces</url-pattern>
             <url-pattern>/Bank.faces</url-pattern>
   </web-resource-collection>
-  <auth-constraint>
-   <role-name>Beheerder</role-name>
-   <role-name>Klant</role-name>
-  </auth-constraint>
- </security-constraint>
+        <auth-constraint>
+            <description/>
+            <role-name>klanten</role-name>
+            <role-name>beheerders</role-name>
+            </auth-constraint>
+        </security-constraint>
  
  <security-constraint>
   <display-name>offices</display-name>
@@ -60,10 +61,10 @@
         </login-config>
     <security-role>
         <description>Kan zijn eigen rekening bekijken en transacties plegen</description>
-        <role-name>Klant</role-name>
+        <role-name>klanten</role-name>
     </security-role>
     <security-role>
         <description>Kan de bank sluiten/openen, accounts maken</description>
-        <role-name>Beheerder</role-name>
+        <role-name>beheerders</role-name>
     </security-role>
     </web-app>

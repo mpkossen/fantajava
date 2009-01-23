@@ -8,8 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 
 <f:view>
+BankBean: ${BankB.displayManager} <br />
 <h:panelGrid id="panel-manager" columns="1"
 	rendered="#{BankB.displayManager}">  
+	    LOLOLOL MANAGER
 	<meta http-equiv="Refresh" content="1; URL=BankManager.faces" />
 </h:panelGrid>
 lolol test
