@@ -25,8 +25,9 @@ extends NameCallback
 
   public String getName()
   {
-    System.out.println("MyNameCallback.getName()");
-    return super.getName();
+    String name = super.getName();
+    System.out.println("MyNameCallback.getName() = "+name);
+    return name;
   }
 
   public String getPrompt()
