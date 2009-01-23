@@ -3,9 +3,6 @@
     Created on : 19-Jan-2009, 13:38:48
     Author     : mistermartin75
 --%>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<f:view>
     <h:form>
         <h:dataTable bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" dir="LTR" first="0" frame="hsides" id="dt1" rows="4"
             rules="all" summary="This is a JSF code to create dataTable." value="#{AccountOffice.getTransactions}" var="item" width="50%">
@@ -29,4 +26,3 @@
         <br/>
         <br/>
     </h:form>
-</f:view>
