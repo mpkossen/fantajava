@@ -14,7 +14,7 @@
             </f:facet>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="soort"/>
+                    <h:outputText value="#{AccountOffice.getTransactions}"/>
                 </f:facet>
             </h:column>
             <h:column>
