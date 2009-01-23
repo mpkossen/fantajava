@@ -30,7 +30,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
     private Map options = null;    // the authentication status
     private boolean succeeded = false;
     private boolean commitSucceeded = false;    // principal, roles, callerPrincipal
-    private final MyPrincipal principal = new MyPrincipal("ABCLoginModule");
+    private final MyPrincipal principal = new MyPrincipal("BankLoginModule");
     private MyGroup roles = null;
     private MyGroup callerPrincipal = null;
 
@@ -38,7 +38,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
     initialize
     \*************************************************************************/
     public void initialize(Subject newSubject, CallbackHandler newCallbackHandler, Map newSharedState, Map newOptions) {
-	System.out.println("ABCLoginModule.initialize(" + newSubject + ", " + newCallbackHandler + ", " + newSharedState + ", " + newOptions + ")");
+	System.out.println("BankLoginModule.initialize(" + newSubject + ", " + newCallbackHandler + ", " + newSharedState + ", " + newOptions + ")");
 	subject = newSubject;
 	principals = subject.getPrincipals();
 	callbackHandler = newCallbackHandler;
@@ -86,7 +86,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    AccountManager office = new AccountManager(username, password, salt);
 	    //AccountManager office = (AccountManager) ctx.lookup("AccountManagerBean/remote");
 	    //office.init(username, password, salt);
-
+	    System.out.println(office.toString());
 	    roles = new MyGroup("Roles");
 	    roles.addMember(new MyPrincipal("beheerders", office));
 	    callerPrincipal = new MyGroup("CallerPrincipal");
@@ -99,9 +99,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 		InitialContext ctx = new InitialContext();
 		AccountOffice office = new AccountOffice(username, password, salt);
 		//AccountOffice office = (AccountOffice) ctx.lookup("AccountOfficeBean/remote");
-
 		//office.init(username, password, salt);
-
 		roles = new MyGroup("Roles");
 		roles.addMember(new MyPrincipal("klanten", office));
 		callerPrincipal = new MyGroup("CallerPrincipal");
@@ -111,7 +109,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 		System.out.println("LoginError: " + e1);
 	    }
 	}
-	System.out.println("ABCLoginModule.login(): " + ret);
+	System.out.println("BankLoginModule.login(): " + ret);
 	return ret;
     }
 
@@ -128,7 +126,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    System.out.println(subject);
 	    ret = commitSucceeded = true;
 	}
-	System.out.println("ABCLoginModule.commit(): " + ret);
+	System.out.println("BankLoginModule.commit(): " + ret);
 	return ret;
     }
 
@@ -143,7 +141,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    ret = ret && logout();
 	    commitSucceeded = false;
 	}
-	System.out.println("ABCLoginModule.abort(): " + ret);
+	System.out.println("BankLoginModule.abort(): " + ret);
 	return ret;
     }
 
@@ -155,7 +153,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	boolean ret = principals.remove(principal);
 	ret = ret && principals.remove(roles);
 	ret = ret && principals.remove(callerPrincipal);
-	System.out.println("ABCLoginModule.logout(): " + ret);
+	System.out.println("BankLoginModule.logout(): " + ret);
 	return ret;
     }
 
