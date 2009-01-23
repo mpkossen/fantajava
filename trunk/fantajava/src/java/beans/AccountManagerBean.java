@@ -37,7 +37,7 @@ public class AccountManagerBean extends CommonBean
 		}
 		try
 		{
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/onzeurlnaam/AccountOffice.faces");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("URL=AccountOffice.faces");
 		}
 		catch ( Exception e )
 		{

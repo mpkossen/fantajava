@@ -9,7 +9,7 @@
 
 <f:view>
 <h:panelGrid id="panel-manager" columns="1"
-	rendered="#{BankB.displayManager}">
+	rendered="#{BankB.displayManager}">  
 	<meta http-equiv="Refresh" content="1; URL=BankManager.faces" />
 </h:panelGrid>
 lolol test
