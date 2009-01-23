@@ -19,7 +19,7 @@
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="name"/>
+                    <h:outputText value="#{AccountOffice.getTransactions}"/>
                 </f:facet>
             </h:column>
             <f:facet name="footer">
