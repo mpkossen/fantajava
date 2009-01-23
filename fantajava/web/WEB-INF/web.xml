@@ -13,14 +13,14 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <security-constraint>
-        <display-name>manager</display-name>
+        <display-name>beheerders</display-name>
         <web-resource-collection>
                 <web-resource-name>BankManager</web-resource-name>
                 <url-pattern>/BankManager.faces</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-                <role-name>Beheerder</role-name>
-        </auth-constraint>
+            <role-name>beheerders</role-name>
+            </auth-constraint>
 </security-constraint>
 
 <security-constraint>
@@ -45,8 +45,8 @@
    <url-pattern>/BankOffice.faces</url-pattern>
   </web-resource-collection>
     <auth-constraint>
-   <role-name>Klant</role-name>
-  </auth-constraint>
+            <role-name>klanten</role-name>
+            </auth-constraint>
  </security-constraint>
 
     
