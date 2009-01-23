@@ -1,5 +1,0 @@
-ALTER TABLE test.Transactions DROP FOREIGN KEY FK_Transactions_Transaction_FromAccount
-ALTER TABLE test.Transactions DROP FOREIGN KEY FK_Transactions_Transaction_ToAccount
-DROP TABLE test.Accounts
-DROP TABLE test.Status
-DROP TABLE test.Transactions

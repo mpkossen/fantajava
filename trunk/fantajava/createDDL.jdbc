@@ -1,5 +1,0 @@
-CREATE TABLE test.Accounts (Account_Number VARCHAR(255) NOT NULL, Account_Name VARCHAR(255), Account_Balance DOUBLE, Account_Pincode VARCHAR(255), Account_Lock INTEGER, Account_Limit DOUBLE, Account_Salt VARCHAR(255), PRIMARY KEY (Account_Number))
-CREATE TABLE test.Status (Status_Id VARCHAR(255) NOT NULL, Status_MaxAccount VARCHAR(255), Status_MaxTransaction VARCHAR(255), Status_Bank VARCHAR(255), PRIMARY KEY (Status_Id))
-CREATE TABLE test.Transactions (Transaction_Id VARCHAR(255) NOT NULL, Transaction_TransferTime VARCHAR(255), Transaction_TransactionTime VARCHAR(255), Transaction_Amount DOUBLE, Transaction_ToAccount VARCHAR(255), Transaction_FromAccount VARCHAR(255), PRIMARY KEY (Transaction_Id))
-ALTER TABLE test.Transactions ADD CONSTRAINT FK_Transactions_Transaction_FromAccount FOREIGN KEY (Transaction_FromAccount) REFERENCES test.Accounts (Account_Number)
-ALTER TABLE test.Transactions ADD CONSTRAINT FK_Transactions_Transaction_ToAccount FOREIGN KEY (Transaction_ToAccount) REFERENCES test.Accounts (Account_Number)
