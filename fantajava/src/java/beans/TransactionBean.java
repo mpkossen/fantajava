@@ -20,7 +20,7 @@ public class TransactionBean {
 
 	private String view = "";
 
-	private static boolean[] render = { false, false, false };
+	private static boolean[] render = { false, false, false, true };
 	
 	public TransactionBean() {
 
@@ -66,21 +66,35 @@ public class TransactionBean {
 		return render[2];
 	}
 	
+	public boolean getRenderOverzicht() {
+		return render[3];
+	}
+	
 	public void setViewStorten() {
 		render[0] = true;
 		render[1] = false;
 		render[2] = false;
+		render[3] = false;
 	}
 	
 	public void setViewOpnemen() {
 		render[0] = false;
 		render[1] = true;
 		render[2] = false;
+		render[3] = false;
 	}
 	
 	public void setViewOverboeken() {
 		render[0] = false;
 		render[1] = false;
 		render[2] = true;
+		render[3] = false;
+	}
+	
+	public void setViewOverzicht() {
+		render[0] = false;
+		render[1] = false;
+		render[2] = false;
+		render[3] = true;
 	}
 }
