@@ -7,14 +7,14 @@ package abcbank.beans;
 
 import efg.jpa.bank.AccountOffice;
 import abcbank.jaas.*;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author mistermartin75
  */
 
-// arno edit: hee faggot je moet het wel in efg.hoewehetooknoemen.iets stoppen. Dit breekt waarschijnlijk vanalles.
-// Done
 public class TransactieOverzicht
 {
 	private ExternalContext ex;
@@ -36,14 +36,9 @@ public class TransactieOverzicht
 		soort = "foo";
 
 		this.ao = ao;
-		//transacties = ao.getPendingTransacties();
-		transacties =  new String[1][2];
-		transacties[0][0] = "foo";
-		transacties[0][1] = "bar";
-		/*for(int i = 0; i < transacties.length; i++)
-		{
-			String soort = transacties[i][1];
-			String bedrag = transacties[i][2];
-		}*/
+		transacties = ao.getPendingTransacties();
+		//transacties =  new String[1][2];
+		//transacties[0][0] = "foo";
+		//transacties[0][1] = "bar";
 	}
 }
