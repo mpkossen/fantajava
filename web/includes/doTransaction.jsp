@@ -4,7 +4,6 @@
    <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>   
    <%@page contentType="text/html" pageEncoding="UTF-8"%>
 	<jsp:include page="includes/header.html" />
-	
 
  <HTML>
   <HEAD>
@@ -21,8 +20,6 @@
      <div id="content">
      <jsp:include page="/includes/transaction_choice.jsp"    flush="true"/>
      </div>
-
-
 
    </CENTER>
   </BODY> 
