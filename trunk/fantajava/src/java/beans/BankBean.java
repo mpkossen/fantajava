@@ -27,14 +27,14 @@ public class BankBean extends CommonBean
         public boolean getDisplayManager()
         {
 		System.out.println("BankBean.getDisplayManager()");
-                System.out.println(ec.isUserInRole("Manager"));
-                return ec.isUserInRole("Manager");
+                System.out.println(ec.isUserInRole("managers"));
+                return ec.isUserInRole("managers");
         }
        
         public boolean getDisplayOffice()
         {
                System.out.println("BankBean.getDisplayOffice()");
-                return ec.isUserInRole("Klant");
+                return ec.isUserInRole("klanten");
         }
 }
 

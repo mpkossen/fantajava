@@ -8,7 +8,6 @@
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 
 <f:view> 
-BankBean: <h:outputText  value="#{BankB}" /><br />
 BankBean: <h:outputText  value="#{BankB.displayManager}" /><br />
 <h:panelGrid id="panel-manager" columns="1"
 	rendered="#{BankB.displayManager}">  
