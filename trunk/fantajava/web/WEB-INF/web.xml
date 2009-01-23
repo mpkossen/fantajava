@@ -48,9 +48,11 @@
   </auth-constraint>
  </security-constraint>
 
+    
+
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name/>
+        <realm-name>ABC-Bank-SecurityDomain</realm-name>
         <form-login-config>
             <form-login-page>/BankLogin.faces</form-login-page>
             <form-error-page>/error.html</form-error-page>
