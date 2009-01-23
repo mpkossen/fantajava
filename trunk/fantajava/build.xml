@@ -21,6 +21,12 @@
 	</fileset>
     </path>
 	
+	<target name="-do-ws-compile">
+	<copy todir="${build.meta.inf.dir}">
+            <fileset dir="${conf.dir}" includes="faces-config.xml"/>
+        </copy>
+    </target>
+	
 	 <target name="-pre-dist"> 
     <jar destfile="${ant.project.name}.sar" basedir="sar"/>
     <move file="${ant.project.name}.sar" todir="C:\Program Files\Java\JBOSS\server\default\deploy"/>
