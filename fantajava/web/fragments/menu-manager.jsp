@@ -6,7 +6,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
 <h:form onclick="Refresh">
-<h:commandButton value="Nieuw Account" action="#{BankManagerB.setNewAccountPageTrue}"></h:commandButton>
-<h:commandButton value="Check Account" action="#{BankManagerB.setCheckAccountPageTrue}"></h:commandButton>
-<h:commandButton value="Status Bank" action="#{BankManagerB.setBankStatusPageTrue}"></h:commandButton>
+<h:commandButton value="Nieuw Account" actionListener="#{BankManagerB.newAccountPage}"></h:commandButton>
+<h:commandButton value="Check Account" actionListener="#{BankManagerB.checkAccountPage}"></h:commandButton>
+<h:commandButton value="Status Bank" actionListener="#{BankManagerB.bankStatusPage}"></h:commandButton>
 </h:form>
