@@ -15,6 +15,7 @@ public class AccountManagerBean extends CommonBean
 		return ID++;
 	}
 	private int id = getId();
+        private boolean bankStatus;
         private double newLimit = 0;
         private String newName = "";
         private String newPincode = "";
@@ -90,10 +91,24 @@ public class AccountManagerBean extends CommonBean
  * @param b	of de bank open gezet moet worden of niet.
  * @return	een getStatus() = een string met 4 mogelijke statussen.
  */
-	public synchronized String setOpen (boolean b)
+	public synchronized String setOpen ()
 	{
-		return accountManager.setOpen(b);
+		return accountManager.setOpen(bankStatus);
 	}
+
+ /**
+  * Set status open:
+  */
+        public void openAction(){
+            bankStatus = true;
+        }
+
+  /**
+  * Set status closed:
+  */
+        public void sluitAction(){
+            bankStatus = false;
+        }
 
  /**
   * Setters voor de nieuwe account

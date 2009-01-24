@@ -34,7 +34,7 @@
     </h:panelGrid>
     <h:panelGrid id="bankStatus" columns="1"
 	rendered="#{BankManagerB.displayBankStatus}">
-	<jsp:include page="/fragments/form-bankStatus.jsp" flush="true"></jsp:include>
+	<jsp:include page="/fragments/form-bankstatus.jsp" flush="true"></jsp:include>
     </h:panelGrid>
 </div>
     </body>
