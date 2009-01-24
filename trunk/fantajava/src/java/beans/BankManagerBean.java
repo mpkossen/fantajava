@@ -87,4 +87,8 @@ public class BankManagerBean {
          return displayPages[2];
      }
 
+     public String getBeheerderNaam() {
+    	 return usrname;
      }
+     }
+
