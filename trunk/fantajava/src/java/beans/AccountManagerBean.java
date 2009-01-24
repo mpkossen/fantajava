@@ -25,6 +25,7 @@ public class AccountManagerBean extends CommonBean
 
 	public AccountManagerBean ()
 	{
+            System.out.println("Accountmanagerbean()");
 		System.out.println("(" + id + ")LibraryManagerBean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
@@ -56,6 +57,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public static String getStatus ()
 	{
+            System.out.println("Accountmanagerbean().getStatus()");
 		return efg.jpa.bank.AccountManager.getStatus(); 
 	}
 
@@ -67,6 +69,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public String[] getAccount (String number)
 	{
+            System.out.println("Accountmanagerbean.getAccount()");
 		String[] ret = accountManager.getAccount(number);
 		return ret;
 	}
@@ -80,6 +83,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public String[][] getTransactions (String number)
 	{
+            System.out.println("Accountmanagerbean().getTransactions");
 		String[][] ret = accountManager.getTransactions(number);	// For compile reasons. To be removed later.
 		return ret;
 	}
@@ -93,6 +97,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public synchronized String setOpen ()
 	{
+            System.out.println("Accountmanagerbean.setOpen()");
 		return accountManager.setOpen(bankStatus);
 	}
 
@@ -100,6 +105,7 @@ public class AccountManagerBean extends CommonBean
   * Set status open:
   */
         public void openAction(){
+            System.out.println("Accountmanagerbean.openAction()");
             bankStatus = true;
         }
 
@@ -107,6 +113,7 @@ public class AccountManagerBean extends CommonBean
   * Set status closed:
   */
         public void sluitAction(){
+            System.out.println("Accountmanagerbean.sluitAction()");
             bankStatus = false;
         }
 
@@ -118,14 +125,17 @@ public class AccountManagerBean extends CommonBean
   */
 
         public void setNewLimit(double limit){
+            System.out.println("Accountmanagerbean.setNewLimit()");
             newLimit = limit;
         }
 
         public void setNewName(String name){
+            System.out.println("Accountmanagerbean.setNewName()");
             newName = name;
         }
 
         public void setNewPincode(String pincode){
+            System.out.println("Accountmanagerbean.setNewPincode()");
             newPincode = pincode;
         }
 
@@ -137,14 +147,17 @@ public class AccountManagerBean extends CommonBean
   */
 
         public double getLimit(){
+            System.out.println("Accountmanagerbean.getLimit()");
             return newLimit;
         }
 
         public String getName(){
+            System.out.println("Accountmanagerbean.getName()");
             return newName;
         }
 
         public String getPincode() {
+            System.out.println("Accountmanagerbean.getPincode()");
             return newPincode;
         }
 
@@ -159,6 +172,7 @@ public class AccountManagerBean extends CommonBean
 
         public String newAccount ()
 	{
+            System.out.println("Accountmanagerbean.newAccount()");
            if(newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)){
                 try{
                 accountManager.newAccount(newLimit, newName, newPincode);
@@ -176,7 +190,7 @@ public class AccountManagerBean extends CommonBean
 	@Override
 	protected void finalize () throws Throwable
 	{
-		System.err.println("(" + id + ")AccountOfficeBean.finalize()");
+		System.err.println("(" + id + ")AccountManagerBean.finalize()");
 		super.finalize();
 	}
 

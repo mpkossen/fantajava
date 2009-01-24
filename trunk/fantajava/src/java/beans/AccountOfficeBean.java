@@ -27,6 +27,7 @@ public class AccountOfficeBean extends CommonBean
 
 	public AccountOfficeBean()
 	{
+            System.out.println("AccountOfficebean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
 		{
@@ -56,6 +57,7 @@ public class AccountOfficeBean extends CommonBean
  */
 	public String[][] getTransactions (String number)
 	{
+            System.out.println("AccountOfficebean.getTransactions()");
 		String[][] ret = accountOffice.getPendingTransacties();
 		return ret;
 	}

@@ -39,20 +39,24 @@ public class BankManagerBean {
      * Setters voor true en false van de verschillende pagina's
      */
     public void newAccountPage(ActionEvent ae) {
+        System.out.println("BankManagerBean.newAccountPage()");
 	naarPagina(0);
     }
 
     public void checkAccountPage(ActionEvent ae) {
+        System.out.println("BankManagerBean.checkAccountPage()");
 	naarPagina(1);
     }
 
     public void bankStatusPage(ActionEvent ae) {
+        System.out.println("BankManagerBean.bankStatusPage()");
 	naarPagina(2);
     }
 
     private void naarPagina(int i) {
+        System.out.println("BankManagerBean.naarPagina()");
 	displayPages = new boolean[]{false, false, false};
-	if (i > 0 && i <= displayPages.length) {
+	if (i >= 0 && i <= displayPages.length) {
 	    displayPages[i] = true;
 	}
     }
@@ -61,18 +65,22 @@ public class BankManagerBean {
      * Getters voor de status van de boolean
      */
     public boolean getDisplayNewAccount() {
+        System.out.println("BankManagerBean.getDisplayNewAccount()");
 	return displayPages[0];
     }
 
     public boolean getDisplayCheckAccount() {
+        System.out.println("BankManagerBean.getDisplayCheckAccount()");
 	return displayPages[1];
     }
 
     public boolean getDisplayBankStatus() {
+        System.out.println("BankManagerBean.getDisplayBankStatus()");
 	return displayPages[2];
     }
 
     public String getBeheerderNaam() {
+        System.out.println("BankManagerBean.getBeheerderNaam()");
 	// lololol grote subobject boom
 	return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
     }
