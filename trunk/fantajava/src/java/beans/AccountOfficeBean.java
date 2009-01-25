@@ -42,7 +42,7 @@ public class AccountOfficeBean extends CommonBean
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
 		{
-			setException("Id=" + id + ", sessionId=" + session.getId());
+			//setException("Id=" + id + ", sessionId=" + session.getId());
 			accountOffice = (AccountOffice) session.getAttribute("accountOffice");
 			if ( accountOffice != null )
 			{
@@ -130,4 +130,11 @@ public class AccountOfficeBean extends CommonBean
         return facesContext.getApplication().getExpressionFactory().createValueExpression(
             facesContext.getELContext(), valueExpression, valueType);
     }
+	
+		@Override
+	protected void finalize () throws Throwable
+	{
+		System.err.println("AccountOfficeBean.finalize()");
+		super.finalize();
+	}
 }

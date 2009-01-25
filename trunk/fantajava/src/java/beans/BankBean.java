@@ -13,13 +13,11 @@ package beans;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import efg.jpa.bank.AccountManager;
 /* Deze bean regelt de login shit. De Bank.jsp vraagt aan deze bean welke subview hij moet presenten.
  * 
  * */
-public class BankBean {      
+public class BankBean extends CommonBean{      
         private ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-	private String status = AccountManager.getStatus();
 	
 	public BankBean() {
 	    System.out.println("BankBean();");
@@ -39,12 +37,19 @@ public class BankBean {
 	
 	public boolean getClosedBankWarning() {
 	    System.out.println("BankBean.getClosedBankWarning()");
-	    return (status.equals(AccountManager.cb) || status.equals(AccountManager.ci));
+	    return (bankclosed);
 	}
 	
 	public boolean getBusyBankWarning() {
 	    System.out.println("BankBean.getBusyBankWarning()");
-	    return (status.equals(AccountManager.ob) || status.equals(AccountManager.cb));
+	    return (bankbusy);
+	}
+	
+		@Override
+	protected void finalize () throws Throwable
+	{
+		System.err.println("BankBean.finalize()");
+		super.finalize();
 	}
 	
 }

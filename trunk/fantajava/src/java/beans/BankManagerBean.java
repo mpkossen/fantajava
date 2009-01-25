@@ -85,5 +85,12 @@ public class BankManagerBean {
 	// lololol grote subobject boom
 	return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
     }
+    
+    	@Override
+	protected void finalize () throws Throwable
+	{
+		System.err.println("BankManagerBean.finalize()");
+		super.finalize();
+	}
 }
 
