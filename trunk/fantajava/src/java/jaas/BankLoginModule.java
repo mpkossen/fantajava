@@ -95,6 +95,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    } catch (Exception e) {
 		System.out.println("LoginError: " + e);
 		// als de bank gesloten is, sla dit dan maar over
+		System.err.println("Bank gesloten, login automatisch gefaald");
 		if (!AccountManager.getStatus().equals(AccountManager.ci) || !AccountManager.getStatus().equals(AccountManager.cb)) {
 		    try {
 			System.out.println("Try as office");
@@ -145,7 +146,7 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    ret = ret && logout();
 	    commitSucceeded = false;
 	}
-	System.out.println("BankLoginModule.abort(): " + ret);
+	System.out.println("BankLoginModule.abort(): " + ret + " "+succeeded);
 	return ret;
     }
 
