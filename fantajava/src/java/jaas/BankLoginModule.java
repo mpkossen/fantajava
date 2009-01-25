@@ -20,6 +20,8 @@ import efg.jpa.bank.AccountManager;
 import efg.jpa.bank.AccountOffice;
 
 import efg.jpa.bank.util.MD5;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 public class BankLoginModule extends beans.CommonBean implements LoginModule {
     // initial state
@@ -33,7 +35,6 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
     private final MyPrincipal principal = new MyPrincipal("BankLoginModule");
     private MyGroup roles = null;
     private MyGroup callerPrincipal = null;
-
     /*************************************************************************\
     initialize
     \*************************************************************************/

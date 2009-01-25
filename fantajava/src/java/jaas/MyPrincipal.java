@@ -14,7 +14,7 @@ public class MyPrincipal
     private Object userObject;
 
     public MyPrincipal(String newName) {
-	//System.out.println("MyPrincipal("+newName+")");
+	System.out.println("MyPrincipal("+newName+")");
 	if (newName == null) {
 	    throw new NullPointerException("illegal null input");
 	}
@@ -34,7 +34,7 @@ public class MyPrincipal
     }
 
     public String getName() {
-	//System.out.println("MyPrincipal("+name+").getName()");
+	System.out.println("MyPrincipal("+name+").getName()");
 	return name;
     }
 
@@ -52,12 +52,12 @@ public class MyPrincipal
 		}
 	    }
 	}
-	//System.out.print("MyPrincipal("+name+").equals("+o+"): "+ret);
+	System.out.print("MyPrincipal("+name+").equals("+o+"): "+ret);
 	return ret;
     }
 
     public int hashCode() {
-	//System.out.println("MyPrincipal("+name+").hashCode()");
+	System.out.println("MyPrincipal("+name+").hashCode()");
 	return name.hashCode();
     }
 
