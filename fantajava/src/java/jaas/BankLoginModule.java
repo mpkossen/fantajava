@@ -86,8 +86,6 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 
 		System.out.println("InitialContext=" + ctx);
 		AccountManager office = new AccountManager(username, password, salt);
-		//AccountManager office = (AccountManager) ctx.lookup("AccountManagerBean/remote");
-		//office.init(username, password, salt);
 		System.out.println(office.toString());
 		roles = new MyGroup("Roles");
 		roles.addMember(new MyPrincipal("beheerders", office));
@@ -102,8 +100,6 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 			System.out.println("Try as office");
 			InitialContext ctx = new InitialContext();
 			AccountOffice office = new AccountOffice(username, password, salt);
-			//AccountOffice office = (AccountOffice) ctx.lookup("AccountOfficeBean/remote");
-			//office.init(username, password, salt);
 			roles = new MyGroup("Roles");
 			roles.addMember(new MyPrincipal("klanten", office));
 			callerPrincipal = new MyGroup("CallerPrincipal");
@@ -132,7 +128,6 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
 	    principals.add(principal);
 	    principals.add(roles);
 	    principals.add(callerPrincipal);
-	    System.out.println(subject);
 	    ret = commitSucceeded = true;
 	}
 	System.out.println("BankLoginModule.commit(): " + ret);

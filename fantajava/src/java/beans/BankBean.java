@@ -19,6 +19,7 @@ import efg.jpa.bank.AccountManager;
  * */
 public class BankBean {      
         private ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+	private String status = AccountManager.getStatus();
 	
 	public BankBean() {
 	    System.out.println("BankBean();");
@@ -38,12 +39,12 @@ public class BankBean {
 	
 	public boolean getClosedBankWarning() {
 	    System.out.println("BankBean.getClosedBankWarning()");
-	    return (AccountManager.getStatus().equals(AccountManager.cb) || AccountManager.getStatus().equals(AccountManager.ci));
+	    return (status.equals(AccountManager.cb) || status.equals(AccountManager.ci));
 	}
 	
 	public boolean getBusyBankWarning() {
 	    System.out.println("BankBean.getBusyBankWarning()");
-	    return (AccountManager.getStatus().equals(AccountManager.ob) || AccountManager.getStatus().equals(AccountManager.cb));
+	    return (status.equals(AccountManager.ob) || status.equals(AccountManager.cb));
 	}
 	
 }
