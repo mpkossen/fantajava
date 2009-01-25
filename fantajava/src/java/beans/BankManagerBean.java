@@ -16,6 +16,7 @@ public class BankManagerBean {
 // placeholder variablen, na inloggen worden die ingevuld
     protected String usrname;
     protected String password;
+    private AccountManagerBean amb;
     int paginatype; // zet op welke pagina hij moet komen na een error
     boolean[] displayPages = {
 	false, // boolean voor newAccountPagina
@@ -34,7 +35,7 @@ public class BankManagerBean {
 
     private void logUit(int i) {
     }
-
+    
     /**
      * Setters voor true en false van de verschillende pagina's
      */

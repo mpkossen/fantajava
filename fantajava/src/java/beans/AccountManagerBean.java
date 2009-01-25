@@ -31,7 +31,7 @@ public class AccountManagerBean {
 	    MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
             accountManager = mp.getAccountManager();
 
-	    if (accountManager != null) {
+	    if (accountManager == null) {
 		System.err.println("geen accountmanager gevonden!");
 		return;
 	    }
@@ -167,11 +167,5 @@ public class AccountManagerBean {
 	    return "Mislukt";
 	}
 	return "";
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-	System.err.println("(" + id + ")AccountManagerBean.finalize()");
-	super.finalize();
     }
 }

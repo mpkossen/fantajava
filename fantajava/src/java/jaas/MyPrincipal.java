@@ -24,6 +24,13 @@ public class MyPrincipal
     public MyPrincipal(String newName, Object uObject) {
 	this(newName);
 	userObject = uObject;
+	// als het object een account office/manager is, cast die shit
+	if (userObject.getClass().isInstance(ao)) {
+	    ao = (AccountOffice) userObject;
+	}
+	if (userObject.getClass().isInstance(am)) {
+	    am = (AccountManager) userObject;
+	}
     }
 
     public String getName() {
@@ -59,6 +66,7 @@ public class MyPrincipal
     }
 
     public AccountManager getAccountManager() {
+
 	System.out.println("MyPricipal.getAccountManager() " + am);
 	return am;
     }
