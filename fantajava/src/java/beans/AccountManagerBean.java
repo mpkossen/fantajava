@@ -6,7 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpSession;
 
-public class AccountManagerBean {
+public class AccountManagerBean extends CommonBean{
 
     private static final long serialVersionUID = 1L;
     private static int ID = 0;
@@ -22,7 +22,7 @@ public class AccountManagerBean {
     private AccountManager accountManager = null;
     private HttpSession session = null;
 
-    public AccountManagerBean() {
+    public AccountManagerBean(){
 	System.out.println("AccountManagerBean()");
 	System.out.println("(" + id + ")AccountManagerBean()");
 	session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -168,4 +168,11 @@ public class AccountManagerBean {
 	}
 	return "";
     }
+    
+    	@Override
+	protected void finalize () throws Throwable
+	{
+		System.err.println("AccountManagerBean.finalize()");
+		super.finalize();
+	}
 }
