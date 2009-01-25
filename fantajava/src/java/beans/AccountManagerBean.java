@@ -1,7 +1,8 @@
 package beans;
 
 import efg.jpa.bank.AccountManager;
-import java.awt.event.ActionEvent;
+import jaas.MyPrincipal;
+import javax.faces.event.ActionEvent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +21,7 @@ public class AccountManagerBean extends CommonBean
         private double newLimit = 0;
         private String newName = "";
         private String newPincode = "";
-        private AccountManager accountManager = null;
+        private AccountManager accountManager;
 	private HttpSession session = null;
 
 
@@ -29,10 +30,12 @@ public class AccountManagerBean extends CommonBean
             System.out.println("AccountManagerBean()");
 		System.out.println("(" + id + ")AccountManagerBean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		if ( session != null )
+                if ( session != null )
 		{
 			setException("Id=" + id + ", sessionId=" + session.getId());
-                        accountManager = (AccountManager) session.getAttribute("accountManager");
+
+                            MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+                            accountManager = mp.getAccountManager();
 
                         if ( accountManager != null )
 			{
@@ -40,16 +43,6 @@ public class AccountManagerBean extends CommonBean
 				return;
 			}
 		}
-		/*
-		 * waarom willen we dit?
-		try
-		{
-			FacesContext.getCurrentInstance().getExternalContext().redirect("URL=AccountOffice.faces");
-		}
-		catch ( Exception e )
-		{
-			System.out.println(e.getMessage());
-		}*/
 	}
 
 /**
