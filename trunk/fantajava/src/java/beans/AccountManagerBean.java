@@ -2,11 +2,12 @@ package beans;
 
 import efg.jpa.bank.AccountManager;
 import jaas.MyPrincipal;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpSession;
 
-public class AccountManagerBean extends CommonBean{
+public class AccountManagerBean extends BankManagerBean {
 
     private static final long serialVersionUID = 1L;
     private static int ID = 0;
@@ -19,23 +20,27 @@ public class AccountManagerBean extends CommonBean{
     private double newLimit = 0;
     private String newName = "";
     private String newPincode = "";
-    private AccountManager accountManager = null;
+    private ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    private MyPrincipal mp = (MyPrincipal) ec.getUserPrincipal();
+    private AccountManager accountManager = mp.getAccountManager();
     private HttpSession session = null;
 
-    public AccountManagerBean(){
+    public AccountManagerBean() {
 	System.out.println("AccountManagerBean()");
-	System.out.println("(" + id + ")AccountManagerBean()");
-	session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-	if (session != null) {
-	    System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
-	    MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-            accountManager = mp.getAccountManager();
-
-	    if (accountManager == null) {
-		System.err.println("geen accountmanager gevonden!");
-		return;
-	    }
-	}
+    /* ff testen lulz.
+    System.out.println("(" + id + ")AccountManagerBean()");
+    session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+    if (session != null) {
+    System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
+    MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+    accountManager = mp.getAccountManager();
+    
+    if (accountManager == null) {
+    System.err.println("geen accountmanager gevonden!");
+    return;
+    }
+    }
+     **/
     }
 
     /**
@@ -168,11 +173,10 @@ public class AccountManagerBean extends CommonBean{
 	}
 	return "";
     }
-    
-    	@Override
-	protected void finalize () throws Throwable
-	{
-		System.err.println("AccountManagerBean.finalize()");
-		super.finalize();
-	}
+
+    @Override
+    protected void finalize() throws Throwable {
+	System.err.println("AccountManagerBean.finalize()");
+	super.finalize();
+    }
 }
