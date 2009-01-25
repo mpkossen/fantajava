@@ -2,9 +2,9 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="BankLogin.jsp" x="83" y="19" zoom="false"/>
-        <Node id="error.html" x="650" y="300" zoom="true"/>
         <Node id="fragments/transaction_storten.jsp" x="400" y="600" zoom="true"/>
+        <Node id="error.html" x="650" y="300" zoom="true"/>
+        <Node id="BankLogin.jsp" x="83" y="19" zoom="false"/>
         <Node id="fragments/form-login.jsp" x="900" y="150" zoom="true"/>
         <Node id="fragments/transaction_submenu.jsp" x="150" y="600" zoom="true"/>
         <Node id="fragments/userdetails.jsp" x="900" y="450" zoom="true"/>
