@@ -6,8 +6,16 @@
 package beans;
 
 import efg.jpa.bank.AccountOffice;
-import javax.faces.context.FacesContext;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.faces.component.html.HtmlColumn;
+import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlPanelGroup;
 import javax.servlet.http.HttpSession;
+import javax.el.ValueExpression;
+import javax.faces.component.html.HtmlDataTable;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -15,10 +23,13 @@ import javax.servlet.http.HttpSession;
  */
 public class AccountOfficeBean extends CommonBean
 {
-	private String id;
+    private static List<List<String>> transacties; // Temp
+    private static String[] dynamicHeaders;
+    private HtmlPanelGroup dynamicDataTableGroup;
 	private AccountOffice accountOffice;
 	private static int ID = 0;
 	private HttpSession session = null;
+	private String id;
 
 	private static int getId ()
 	{
@@ -48,17 +59,75 @@ public class AccountOfficeBean extends CommonBean
 		}
 	}
 
-/**
- * Geeft alle transacties van de rekening number.
- * @param number	het nummer van de account
- * @return	een String[][]. De eerste array bevat nummers vanaf 0 tot en met het
- * aantal van transacties. De tweede array bevat de informatie van een
- * transactie (id, from, to, amount, transactiontime, transfertime)
- */
-	public String[][] getTransactions (String number)
+    private void loadTransacties()
 	{
-            System.out.println("AccountOfficebean.getTransactions()");
-		String[][] ret = accountOffice.getPendingTransacties();
-		return ret;
-	}
+		dynamicHeaders = new String[] {"ID", "Name"};
+		transacties = new ArrayList<List<String>>();
+
+		String[][] oldtransacties = accountOffice.getPendingTransacties();
+
+		for(int i = 0; i < oldtransacties.length; i++)
+		{
+			transacties.add(Arrays.asList(new String[] { oldtransacties[i][i], oldtransacties[i][i+1] }));
+		}
+    }
+
+    private void populateDynamicDataTable() {
+
+        // Create <h:dataTable value="#{AccountOfficeB.transacties}" var="dynamicItem">.
+        HtmlDataTable dynamicDataTable = new HtmlDataTable();
+        dynamicDataTable.setValueExpression("value",
+            createValueExpression("#{AccountOfficeBean.transacties}", List.class));
+        dynamicDataTable.setVar("dynamicItem");
+
+        for (int i = 0; i < transacties.get(0).size(); i++) {
+
+            // Create <h:column>.
+            HtmlColumn column = new HtmlColumn();
+            dynamicDataTable.getChildren().add(column);
+
+            // Create <h:outputText value="dynamicHeaders[i]"> for <f:facet name="header"> of column.
+            HtmlOutputText header = new HtmlOutputText();
+            header.setValue(dynamicHeaders[i]);
+            column.setHeader(header);
+
+            // Create <h:outputText value="#{dynamicItem[" + i + "]}"> for the body of column.
+            HtmlOutputText output = new HtmlOutputText();
+            output.setValueExpression("value",
+                createValueExpression("#{dynamicItem[" + i + "]}", String.class));
+            column.getChildren().add(output);
+        }
+
+        // Add the datatable to <h:panelGroup binding="#{myBean.dynamicDataTableGroup}">.
+        dynamicDataTableGroup = new HtmlPanelGroup();
+        dynamicDataTableGroup.getChildren().add(dynamicDataTable);
+    }
+
+    public HtmlPanelGroup getDynamicDataTableGroup()
+	{
+        // This will be called once in the first RESTORE VIEW phase.
+        if (dynamicDataTableGroup == null)
+		{
+            loadTransacties();
+            populateDynamicDataTable();
+        }
+
+        return dynamicDataTableGroup;
+    }
+
+    public List<List<String>> getTransacties()
+	{
+        return transacties;
+    }
+
+    public void setDynamicDataTableGroup(HtmlPanelGroup dynamicDataTableGroup) {
+        this.dynamicDataTableGroup = dynamicDataTableGroup;
+    }
+
+	private ValueExpression createValueExpression(String valueExpression, Class<?> valueType)
+	{
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        return facesContext.getApplication().getExpressionFactory().createValueExpression(
+            facesContext.getELContext(), valueExpression, valueType);
+    }
 }
