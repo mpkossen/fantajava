@@ -38,7 +38,7 @@ public class BankBean {
 	
 	public boolean getClosedBankWarning() {
 	    System.out.println("BankBean.getClosedBankWarning()");
-	    return true;//(AccountManager.getStatus().equals(AccountManager.cb) || AccountManager.getStatus().equals(AccountManager.ci));
+	    return (AccountManager.getStatus().equals(AccountManager.cb) || AccountManager.getStatus().equals(AccountManager.ci));
 	}
 	
 	public boolean getBusyBankWarning() {
