@@ -54,7 +54,7 @@ public class BankManagerBean {
     }
 
     private void naarPagina(int i) {
-        System.out.println("BankManagerBean.naarPagina()");
+        System.out.println("BankManagerBean.naarPagina("+i+")");
 	displayPages = new boolean[]{false, false, false};
 	if (i >= 0 && i <= displayPages.length) {
 	    displayPages[i] = true;

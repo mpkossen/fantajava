@@ -2,6 +2,7 @@
     Document   : form-newaccount
     Created on : 22-jan-2009, 8:51:06
     Author     : Vincent
+    
 --%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
