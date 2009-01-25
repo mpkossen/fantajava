@@ -36,6 +36,7 @@ public class AccountManagerBean extends CommonBean
 
                         if ( accountManager != null )
 			{
+				System.err.println("geen accountmanager gevonden!");
 				return;
 			}
 		}
