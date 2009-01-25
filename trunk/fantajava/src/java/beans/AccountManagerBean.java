@@ -25,8 +25,8 @@ public class AccountManagerBean extends CommonBean
 
 	public AccountManagerBean ()
 	{
-            System.out.println("Accountmanagerbean()");
-		System.out.println("(" + id + ")LibraryManagerBean()");
+            System.out.println("AccountManagerBean()");
+		System.out.println("(" + id + ")AccountManagerBean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
 		{
@@ -37,6 +37,8 @@ public class AccountManagerBean extends CommonBean
 				return;
 			}
 		}
+		/*
+		 * waarom willen we dit?
 		try
 		{
 			FacesContext.getCurrentInstance().getExternalContext().redirect("URL=AccountOffice.faces");
@@ -44,7 +46,7 @@ public class AccountManagerBean extends CommonBean
 		catch ( Exception e )
 		{
 			System.out.println(e.getMessage());
-		}
+		}*/
 	}
 
 /**
@@ -57,7 +59,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public static String getStatus ()
 	{
-            System.out.println("Accountmanagerbean().getStatus()");
+            System.out.println("AccountManagerBean().getStatus()");
 		return efg.jpa.bank.AccountManager.getStatus(); 
 	}
 
@@ -69,7 +71,7 @@ public class AccountManagerBean extends CommonBean
  */
 	public String[] getAccount (String number)
 	{
-            System.out.println("Accountmanagerbean.getAccount()");
+            System.out.println("AccountManagerBean.getAccount()");
 		String[] ret = accountManager.getAccount(number);
 		return ret;
 	}
@@ -172,7 +174,7 @@ public class AccountManagerBean extends CommonBean
 
         public String newAccount ()
 	{
-            System.out.println("Accountmanagerbean.newAccount()");
+            System.out.println("AccountManagerBean.newAccount()");
            if(newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)){
                 try{
                 accountManager.newAccount(newLimit, newName, newPincode);

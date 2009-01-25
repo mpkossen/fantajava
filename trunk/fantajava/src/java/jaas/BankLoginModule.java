@@ -52,62 +52,71 @@ public class BankLoginModule extends beans.CommonBean implements LoginModule {
     public boolean login()
 	    throws LoginException {
 	System.out.println("BankLoginModule.login()");
-
 	boolean ret = false;
-	MyNameCallback nc = new MyNameCallback("User name: ", "guest");
-	MyPasswordCallback pc = new MyPasswordCallback("Password: ", false);
-	Callback callbacks[] = {nc, pc};
-	try {
-	    callbackHandler.handle(callbacks);
-	} catch (IOException e) {
-	    System.out.println(e);
-	    LoginException le = new LoginException("Failed to get username/password");
-	    le.initCause(e);
-	    throw le;
-	} catch (UnsupportedCallbackException e) {
-	    System.out.println(e);
-	    LoginException le = new LoginException("CallbackHandler does not support: " + e.getCallback());
-	    le.initCause(e);
-	    throw le;
-	}
-	String username = nc.getName();
-	char[] pwd = pc.getPassword();
-	String password = new String(pwd.clone());
-	pc.clearPassword();
-	System.out.println("username=" + username);
-	System.out.println("password=" + password);
+	// als de bank busy is, laat maar, vergeet dit helemaal
+	if (!AccountManager.getStatus().equals(AccountManager.cb) || !AccountManager.getStatus().equals(AccountManager.ob)) {
 
-	String salt = "" + System.currentTimeMillis();
-	password = MD5.encode(MD5.hash(password + salt));
-	try {
-	    InitialContext ctx = new InitialContext();
-
-	    System.out.println("InitialContext=" + ctx);
-	    AccountManager office = new AccountManager(username, password, salt);
-	    //AccountManager office = (AccountManager) ctx.lookup("AccountManagerBean/remote");
-	    //office.init(username, password, salt);
-	    System.out.println(office.toString());
-	    roles = new MyGroup("Roles");
-	    roles.addMember(new MyPrincipal("beheerders", office));
-	    callerPrincipal = new MyGroup("CallerPrincipal");
-	    callerPrincipal.addMember(new MyPrincipal(username, office));
-	    ret = succeeded = true;
-	} catch (Exception e) {
-	    System.out.println("LoginError: " + e);
+	    MyNameCallback nc = new MyNameCallback("User name: ", "guest");
+	    MyPasswordCallback pc = new MyPasswordCallback("Password: ", false);
+	    Callback callbacks[] = {nc, pc};
 	    try {
-		System.out.println("Try as office");
+		callbackHandler.handle(callbacks);
+	    } catch (IOException e) {
+		System.out.println(e);
+		LoginException le = new LoginException("Failed to get username/password");
+		le.initCause(e);
+		throw le;
+	    } catch (UnsupportedCallbackException e) {
+		System.out.println(e);
+		LoginException le = new LoginException("CallbackHandler does not support: " + e.getCallback());
+		le.initCause(e);
+		throw le;
+	    }
+	    String username = nc.getName();
+	    char[] pwd = pc.getPassword();
+	    String password = new String(pwd.clone());
+	    pc.clearPassword();
+	    System.out.println("username=" + username);
+	    System.out.println("password=" + password);
+
+	    String salt = "" + System.currentTimeMillis();
+	    password = MD5.encode(MD5.hash(password + salt));
+	    try {
 		InitialContext ctx = new InitialContext();
-		AccountOffice office = new AccountOffice(username, password, salt);
-		//AccountOffice office = (AccountOffice) ctx.lookup("AccountOfficeBean/remote");
+
+		System.out.println("InitialContext=" + ctx);
+		AccountManager office = new AccountManager(username, password, salt);
+		//AccountManager office = (AccountManager) ctx.lookup("AccountManagerBean/remote");
 		//office.init(username, password, salt);
+		System.out.println(office.toString());
 		roles = new MyGroup("Roles");
-		roles.addMember(new MyPrincipal("klanten", office));
+		roles.addMember(new MyPrincipal("beheerders", office));
 		callerPrincipal = new MyGroup("CallerPrincipal");
 		callerPrincipal.addMember(new MyPrincipal(username, office));
 		ret = succeeded = true;
-	    } catch (Exception e1) {
-		System.out.println("LoginError: " + e1);
+	    } catch (Exception e) {
+		System.out.println("LoginError: " + e);
+		// als de bank gesloten is, sla dit dan maar over
+		if (!AccountManager.getStatus().equals(AccountManager.ci) || !AccountManager.getStatus().equals(AccountManager.cb)) {
+		    try {
+			System.out.println("Try as office");
+			InitialContext ctx = new InitialContext();
+			AccountOffice office = new AccountOffice(username, password, salt);
+			//AccountOffice office = (AccountOffice) ctx.lookup("AccountOfficeBean/remote");
+			//office.init(username, password, salt);
+			roles = new MyGroup("Roles");
+			roles.addMember(new MyPrincipal("klanten", office));
+			callerPrincipal = new MyGroup("CallerPrincipal");
+			callerPrincipal.addMember(new MyPrincipal(username, office));
+			ret = succeeded = true;
+		    } catch (Exception e1) {
+			System.out.println("LoginError: " + e1);
+		    }
+		}
 	    }
+
+	} else {
+	    System.err.println("Bank is busy! Geen login mogelijk.");
 	}
 	System.out.println("BankLoginModule.login(): " + ret);
 	return ret;

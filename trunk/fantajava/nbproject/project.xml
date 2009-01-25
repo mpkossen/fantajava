@@ -19,11 +19,11 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library files="1">
-                    <file>${file.reference.toplink-essentials.jar}</file>
+                    <file>${file.reference.toplink-essentials-agent.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library files="1">
-                    <file>${file.reference.toplink-essentials-agent.jar}</file>
+                    <file>${file.reference.toplink-essentials.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

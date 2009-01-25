@@ -19,4 +19,10 @@
     <managed-bean-class>beans.AccountManagerBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean>
+    <managed-bean-name>BankManagerB</managed-bean-name>
+    <managed-bean-class>beans.BankManagerBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>  
+  
 </faces-config>
