@@ -1,6 +1,7 @@
 package beans;
 
 import efg.jpa.bank.AccountManager;
+import java.awt.event.ActionEvent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -32,6 +33,7 @@ public class AccountManagerBean extends CommonBean
 		{
 			setException("Id=" + id + ", sessionId=" + session.getId());
                         accountManager = (AccountManager) session.getAttribute("accountManager");
+
                         if ( accountManager != null )
 			{
 				return;
@@ -106,17 +108,19 @@ public class AccountManagerBean extends CommonBean
  /**
   * Set status open:
   */
-        public void openAction(){
+        public void openAction(ActionEvent ae){
             System.out.println("Accountmanagerbean.openAction()");
             bankStatus = true;
+            setOpen();
         }
 
   /**
   * Set status closed:
   */
-        public void sluitAction(){
+        public void sluitAction(ActionEvent ae){
             System.out.println("Accountmanagerbean.sluitAction()");
             bankStatus = false;
+            setOpen();
         }
 
  /**
