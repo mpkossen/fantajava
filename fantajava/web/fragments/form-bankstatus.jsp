@@ -10,9 +10,9 @@
     Hieronder kunt u de status van de bank wijzigen.<br />
     De bank is nu:<h:outputText rendered="#{!BankB.closedBankWarning}" value="Open!" /><h:outputText rendered="#{BankB.closedBankWarning}" value="Gesloten" /><br />
     <h:form>
-    <h:commandButton value="Open" action="#{AccountManagerB.openAction}">
+    <h:commandButton id="cmd-open-bank" value="Open" actionListener="#{AccountManagerB.openAction}">
     </h:commandButton>
-    <h:commandButton value="Sluit" action="#{AccountManagerB.sluitAction}">
+    <h:commandButton id="cmd-sluit-bank" value="Sluit" actionListener="#{AccountManagerB.sluitAction}">
     </h:commandButton>
     </h:form>
 </f:subview>
