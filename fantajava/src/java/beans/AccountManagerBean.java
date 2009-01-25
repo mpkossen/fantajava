@@ -109,18 +109,16 @@ public class AccountManagerBean extends CommonBean
   * Set status open:
   */
         public void openAction(ActionEvent ae){
-            System.out.println("Accountmanagerbean.openAction()");
             bankStatus = true;
-            setOpen();
+            System.out.println("Accountmanagerbean.openAction()"+setOpen());
         }
 
   /**
   * Set status closed:
   */
         public void sluitAction(ActionEvent ae){
-            System.out.println("Accountmanagerbean.sluitAction()");
             bankStatus = false;
-            setOpen();
+            System.out.println("Accountmanagerbean.sluitAction()"+setOpen());
         }
 
  /**
