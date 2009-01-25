@@ -28,23 +28,14 @@ public class AccountManagerBean {
 	session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	if (session != null) {
 	    System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
-	    accountManager = (AccountManager) session.getAttribute("accountManager");
+	    MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+            accountManager = mp.getAccountManager();
 
 	    if (accountManager != null) {
 		System.err.println("geen accountmanager gevonden!");
 		return;
 	    }
 	}
-    /*
-     * waarom willen we dit?
-    try
-    {
-    FacesContext.getCurrentInstance().getExternalContext().redirect("URL=AccountOffice.faces");
-    }
-    catch ( Exception e )
-    {
-    System.out.println(e.getMessage());
-    }*/
     }
 
     /**
