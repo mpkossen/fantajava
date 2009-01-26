@@ -10,10 +10,10 @@
     <h1>Nieuw Account aanmaken</h1>
 	<h:form id="form-newaccount">
 		<ul>
-			<li><label>Gebruikersnaam:</label><h:inputText id="username" styleClass="formInput" value="#{AccountManagerB.newaccount.newName}" required="true" valueChangeListener="#{AccountManagerB.setNewName}"/></li>
-			<li><label>Limiet:</label><h:inputText id="limit" styleClass="formInput" value="#{AccountManagerB.newaccount.newLimit}" required="true" valueChangeListener="#{AccountManagerB.setNewLimit}"/></li>
-			<li><label>Pincode:</label><h:inputSecret id="pincode" styleClass="formInput" value="#{AccountManagerB.newaccount.newPincode}" required="true" valueChangeListener="#{AccountManagerB.setNewPincode}"/></li>
-			<li><input type="reset" name="reset" value="Wissen" /><h:commandButton id="createNewAccount" type="submit" value="createNewAccount" actionListener="#{AccountManagerB.newAccount}"/></li>
+			<li><label>Gebruikersnaam:</label><h:inputText id="username" styleClass="formInput" required="true" valueChangeListener="#{AccountManagerB.setNewName}"/></li>
+			<li><label>Limiet:</label><h:inputText id="limit" styleClass="formInput"  required="true" valueChangeListener="#{AccountManagerB.setNewLimit}"/></li>
+			<li><label>Pincode:</label><h:inputSecret id="pincode" styleClass="formInput" required="true" valueChangeListener="#{AccountManagerB.setNewPincode}"/></li>
+			<li><input type="reset" name="reset" value="Wissen" /><h:commandButton id="createNewAccount" type="submit" value="createNewAccount" actionListener="#{AccountManagerB.createAccount}" /></li>
 		</ul>
 	</h:form>
 </f:subview>

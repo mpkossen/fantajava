@@ -8,9 +8,10 @@
 
 <f:subview id="form-login">
 <h1>Login</h1>
-<h:outputText rendered="#{BankB.busyBankWarning}" value="De ABC bank is overbezet, een moment geduld aub." /><br />
+<h3><h:outputText rendered="#{!BankB.closedBankWarning}" value="De ABC bank is open." /></h3>
+<h:outputText rendered="#{BankB.busyBankWarning}" value="De ABC bank is overbezet, een moment geduld aub." />
 <h:panelGrid columns="1" rendered="#{!BankB.busyBankWarning}" style="width:100%;">
-<h:outputText rendered="#{BankB.closedBankWarning}" value="De ABC bank is gesloten. Alleen managers kunnen inloggen." /><br />
+<h:outputText rendered="#{BankB.closedBankWarning}" value="De ABC bank is gesloten. Alleen managers kunnen inloggen." />
 <form action="j_security_check" method="post" action="j_security_check">
     <dl>
 	<dt><label for="j_username">Gebruikersnaam</label></dt>
