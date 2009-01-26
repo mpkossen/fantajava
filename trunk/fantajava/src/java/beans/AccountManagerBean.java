@@ -13,7 +13,7 @@ public class AccountManagerBean extends BankManagerBean {
     private static int ID = 0;
 
     private static int getId() {
-	return ID++;
+        return ID++;
     }
     private int id = getId();
     private boolean bankStatus;
@@ -21,28 +21,46 @@ public class AccountManagerBean extends BankManagerBean {
     private String newName = "";
     private String newPincode = "";
     private ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    private MyPrincipal mp = (MyPrincipal) ec.getUserPrincipal();
-    private AccountManager accountManager = mp.getAccountManager();
+ //   private MyPrincipal mp = (MyPrincipal) ec.getUserPrincipal();
+    private AccountManager accountManager = null;
     private HttpSession session = null;
-	private String naam, number, balance;
+    private String naam, number, balance;
 
     public AccountManagerBean(String number) {
-	System.out.println("AccountManagerBean()");
-	dumpAccountData(getAccount(number));
-    /* ff testen lulz.
-    System.out.println("(" + id + ")AccountManagerBean()");
-    session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-    if (session != null) {
-    System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
-    MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-    accountManager = mp.getAccountManager();
-    
-    if (accountManager == null) {
-    System.err.println("geen accountmanager gevonden!");
-    return;
+        System.out.println("AccountManagerBean()");
+        dumpAccountData(getAccount(number));
+        /* ff testen lulz.
+        System.out.println("(" + id + ")AccountManagerBean()");
+        session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        if (session != null) {
+        System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
+        MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        accountManager = mp.getAccountManager();
+
+        if (accountManager == null) {
+        System.err.println("geen accountmanager gevonden!");
+        return;
+        }
+        }
+         **/
     }
-    }
-     **/
+
+
+    //TODO: dit ding aanroepen!
+
+    public void createAccountManager() {
+        System.out.println("createAccountManager()");
+        session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        if (session != null) {
+            System.out.println("session: Id=" + id + ", sessionId=" + session.getId());
+            MyPrincipal mp = (MyPrincipal) FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+            accountManager = mp.getAccountManager();
+
+            if (accountManager == null) {
+                System.err.println("geen accountmanager gevonden!");
+                return;
+            }
+        }
     }
 
     /**
@@ -54,8 +72,8 @@ public class AccountManagerBean extends BankManagerBean {
      * d.	closed and idle
      */
     public static String getStatus() {
-	System.out.println("AccountManagerBean().getStatus()");
-	return efg.jpa.bank.AccountManager.getStatus();
+        System.out.println("AccountManagerBean().getStatus()");
+        return efg.jpa.bank.AccountManager.getStatus();
     }
 
     /**
@@ -65,35 +83,31 @@ public class AccountManagerBean extends BankManagerBean {
      * @return	details van een rekening (naam, number, balance, limit, pincode en salt)
      */
     public String[] getAccount(String number) {
-	System.out.println("AccountManagerBean.getAccount()");
-	String[] ret = accountManager.getAccount(number);
-	return ret;
+        System.out.println("AccountManagerBean.getAccount()");
+        String[] ret = accountManager.getAccount(number);
+        return ret;
     }
 
-	public void dumpAccountData(String[] account)
-	{
-		naam = account[0];
-		number = account[1];
-		balance = account[2];
-	}
+    public void dumpAccountData(String[] account) {
+        naam = account[0];
+        number = account[1];
+        balance = account[2];
+    }
 
-	// Dit is denk ik niet nodig
-	public String getNaam()
-	{
-		return naam;
-	}
+    // Dit is denk ik niet nodig
+    public String getNaam() {
+        return naam;
+    }
 
-	// Dit is denk ik niet nodig
-	public String getNumber()
-	{
-		return number;
-	}
+    // Dit is denk ik niet nodig
+    public String getNumber() {
+        return number;
+    }
 
-	// Dit is denk ik niet nodig
-	public String getBalance()
-	{
-		return balance;
-	}
+    // Dit is denk ik niet nodig
+    public String getBalance() {
+        return balance;
+    }
 
     /**
      * Geeft alle transacties van de rekening number.
@@ -103,9 +117,9 @@ public class AccountManagerBean extends BankManagerBean {
      * transactie (id, from, to, amount, transactiontime, transfertime)
      */
     public String[][] getTransactions(String number) {
-	System.out.println("AccountManagerBean().getTransactions");
-	String[][] ret = accountManager.getTransactions(number);	// For compile reasons. To be removed later.
-	return ret;
+        System.out.println("AccountManagerBean().getTransactions");
+        String[][] ret = accountManager.getTransactions(number);	// For compile reasons. To be removed later.
+        return ret;
     }
 
     /**
@@ -116,26 +130,31 @@ public class AccountManagerBean extends BankManagerBean {
      * @return	een getStatus() = een string met 4 mogelijke statussen.
      */
     public String setOpen() {
-	System.out.println("AccountManagerBean.setOpen()");
-	return accountManager.setOpen(bankStatus);
+        System.out.println("AccountManagerBean.setOpen()");
+        return accountManager.setOpen(bankStatus);
     }
 
     /**
      * Set status open:
      */
     public void openAction(ActionEvent ae) {
-	System.out.println("test1");
-	bankStatus = true;
-	System.out.println("AccountManagerBean.openAction()" + setOpen());
+        if(accountManager.equals(null)){
+            createAccountManager();
+        }
+        System.out.println("test1");
+        bankStatus = true;
+        System.out.println("AccountManagerBean.openAction()" + setOpen());
     }
 
     /**
      * Set status closed:
      */
     public void sluitAction(ActionEvent ae) {
-	System.out.println("test2");
-	bankStatus = false;
-	System.out.println("AccountManagerBean.sluitAction()" + setOpen());
+        if(accountManager.equals(null))
+            createAccountManager();
+        System.out.println("test2");
+        bankStatus = false;
+        System.out.println("AccountManagerBean.sluitAction()" + setOpen());
     }
 
     /**
@@ -145,18 +164,18 @@ public class AccountManagerBean extends BankManagerBean {
      * @param pincode  de nieuwe pincode
      */
     public void setNewLimit(double limit) {
-	System.out.println("AccountManagerBean.setNewLimit()");
-	newLimit = limit;
+        System.out.println("AccountManagerBean.setNewLimit()");
+        newLimit = limit;
     }
 
     public void setNewName(String name) {
-	System.out.println("AccountManagerBean.setNewName()");
-	newName = name;
+        System.out.println("AccountManagerBean.setNewName()");
+        newName = name;
     }
 
     public void setNewPincode(String pincode) {
-	System.out.println("AccountManagerBean.setNewPincode()");
-	newPincode = pincode;
+        System.out.println("AccountManagerBean.setNewPincode()");
+        newPincode = pincode;
     }
 
     /**
@@ -166,18 +185,18 @@ public class AccountManagerBean extends BankManagerBean {
      * @param newPincode  de nieuwe pincode
      */
     public double getLimit() {
-	System.out.println("AccountManagerBean.getLimit()");
-	return newLimit;
+        System.out.println("AccountManagerBean.getLimit()");
+        return newLimit;
     }
 
     public String getName() {
-	System.out.println("AccountManagerBean.getName()");
-	return newName;
+        System.out.println("AccountManagerBean.getName()");
+        return newName;
     }
 
     public String getPincode() {
-	System.out.println("AccountManagerBean.getPincode()");
-	return newPincode;
+        System.out.println("AccountManagerBean.getPincode()");
+        return newPincode;
     }
 
     /**
@@ -185,25 +204,27 @@ public class AccountManagerBean extends BankManagerBean {
      * @param newLimit		limiet van de rekening.
      * @param newName		naam van de eigenaar.
      * @param newPincode	pincode van de rekening.
-     * @return				het nummer van de nieuwe aangemaakte rekening.
+     * @return			het nummer van de nieuwe aangemaakte rekening.
      */
     public String newAccount() {
-	System.out.println("AccountManagerBean.newAccount()");
-	if (newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)) {
-	    try {
-		accountManager.newAccount(newLimit, newName, newPincode);
-	    } catch (Exception e) {
-		System.out.println("newAccount exception: " + e.getMessage());
-	    }
-	} else {
-	    return "Mislukt";
-	}
-	return "";
+        if(accountManager.equals(null))
+            createAccountManager();
+        System.out.println("AccountManagerBean.newAccount()");
+        if (newLimit != 0 && !newName.equals(null) && !newPincode.equals(null)) {
+            try {
+                accountManager.newAccount(newLimit, newName, newPincode);
+            } catch (Exception e) {
+                System.out.println("newAccount exception: " + e.getMessage());
+            }
+        } else {
+            return "Mislukt";
+        }
+        return "";
     }
 
     @Override
     protected void finalize() throws Throwable {
-	System.err.println("AccountManagerBean.finalize()");
-	super.finalize();
+        System.err.println("AccountManagerBean.finalize()");
+        super.finalize();
     }
 }
