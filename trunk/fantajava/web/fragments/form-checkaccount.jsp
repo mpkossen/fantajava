@@ -14,4 +14,10 @@
     <h:commandButton value="Sluit" action="#{AccountManagerB.sluitAction}">
     </h:commandButton>
     </h:form>
+    Naam
+    <h:outputText value="#{AccountManagerB.naam}" />
+    Rekening
+    <h:outputText value="#{AccountManagerB.number}" />
+    Balans
+    <h:outputText value="#{AccountManagerB.balance}" />
 </f:subview>

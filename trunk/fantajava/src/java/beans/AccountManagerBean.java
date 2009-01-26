@@ -24,9 +24,11 @@ public class AccountManagerBean extends BankManagerBean {
     private MyPrincipal mp = (MyPrincipal) ec.getUserPrincipal();
     private AccountManager accountManager = mp.getAccountManager();
     private HttpSession session = null;
+	private String naam, number, balance;
 
-    public AccountManagerBean() {
+    public AccountManagerBean(String number) {
 	System.out.println("AccountManagerBean()");
+	dumpAccountData(getAccount(number));
     /* ff testen lulz.
     System.out.println("(" + id + ")AccountManagerBean()");
     session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -67,6 +69,31 @@ public class AccountManagerBean extends BankManagerBean {
 	String[] ret = accountManager.getAccount(number);
 	return ret;
     }
+
+	public void dumpAccountData(String[] account)
+	{
+		naam = account[0];
+		number = account[1];
+		balance = account[2];
+	}
+
+	// Dit is denk ik niet nodig
+	public String getNaam()
+	{
+		return naam;
+	}
+
+	// Dit is denk ik niet nodig
+	public String getNumber()
+	{
+		return number;
+	}
+
+	// Dit is denk ik niet nodig
+	public String getBalance()
+	{
+		return balance;
+	}
 
     /**
      * Geeft alle transacties van de rekening number.
