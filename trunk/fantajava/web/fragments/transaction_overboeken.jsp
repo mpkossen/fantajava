@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
+<f:subview id="transaction_overboeken">
    <h:panelGroup id="panel-overboeken" layout="block"> 
 	<h1>Overboeken</h1> 
 	<h:form id="form-overboeking"> 
@@ -9,4 +12,5 @@
 	</td> </tr> </table> 
 	<h:commandButton id="cmd-overboeken" type="submit" styleClass="knop" value="Boek Over!" actionListener="#{TransactionB.doOverboeking}" /> 
 	</h:form> 
-	</h:panelGroup> 
+	</h:panelGroup>
+</f:subview>
