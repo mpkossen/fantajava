@@ -38,7 +38,7 @@ public class AccountOfficeBean extends CommonBean
 
 	public AccountOfficeBean()
 	{
-            System.out.println("AccountOfficebean()");
+            System.out.println("AccountOfficeBean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
 		{
@@ -74,11 +74,11 @@ public class AccountOfficeBean extends CommonBean
 
     private void populateDynamicDataTable() {
 
-        // Create <h:dataTable value="#{AccountOfficeB.transacties}" var="dynamicItem">.
+        // Create <h:dataTable value="#{AccountOfficeB.transacties}" var="transacties">.
         HtmlDataTable dynamicDataTable = new HtmlDataTable();
         dynamicDataTable.setValueExpression("value",
             createValueExpression("#{AccountOfficeBean.transacties}", List.class));
-        dynamicDataTable.setVar("dynamicItem");
+        dynamicDataTable.setVar("transacties");
 
         for (int i = 0; i < transacties.get(0).size(); i++) {
 
@@ -91,14 +91,14 @@ public class AccountOfficeBean extends CommonBean
             header.setValue(dynamicHeaders[i]);
             column.setHeader(header);
 
-            // Create <h:outputText value="#{dynamicItem[" + i + "]}"> for the body of column.
+            // Create <h:outputText value="#{transacties[" + i + "]}"> for the body of column.
             HtmlOutputText output = new HtmlOutputText();
             output.setValueExpression("value",
-                createValueExpression("#{dynamicItem[" + i + "]}", String.class));
+                createValueExpression("#{transacties[" + i + "]}", String.class));
             column.getChildren().add(output);
         }
 
-        // Add the datatable to <h:panelGroup binding="#{myBean.dynamicDataTableGroup}">.
+        // Add the datatable to <h:panelGroup binding="#{AccountOfficeB.dynamicDataTableGroup}">.
         dynamicDataTableGroup = new HtmlPanelGroup();
         dynamicDataTableGroup.getChildren().add(dynamicDataTable);
     }
@@ -131,7 +131,7 @@ public class AccountOfficeBean extends CommonBean
             facesContext.getELContext(), valueExpression, valueType);
     }
 	
-		@Override
+	@Override
 	protected void finalize () throws Throwable
 	{
 		System.err.println("AccountOfficeBean.finalize()");
