@@ -5,6 +5,7 @@ import jaas.MyPrincipal;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.HttpSession;
 
 public class AccountManagerBean extends BankManagerBean {
@@ -26,7 +27,7 @@ public class AccountManagerBean extends BankManagerBean {
     private HttpSession session = null;
     private String naam, number, balance;
 
-    public AccountManagerBean(String number) {
+    public AccountManagerBean() {
         System.out.println("AccountManagerBean()");
         dumpAccountData(getAccount(number));
         /* ff testen lulz.
@@ -163,19 +164,19 @@ public class AccountManagerBean extends BankManagerBean {
      * @param name     de nieuwe naam
      * @param pincode  de nieuwe pincode
      */
-    public void setNewLimit(double limit) {
-        System.out.println("AccountManagerBean.setNewLimit()");
-        newLimit = limit;
+    public void setNewLimit(ValueChangeEvent vce) {
+	System.out.println("AccountManagerBean.setNewLimit()");
+	newLimit = (Double) vce.getNewValue();
     }
 
-    public void setNewName(String name) {
-        System.out.println("AccountManagerBean.setNewName()");
-        newName = name;
+    public void setNewName(ValueChangeEvent vce) {
+	System.out.println("AccountManagerBean.setNewName()");
+	newName = vce.getNewValue().toString();
     }
 
-    public void setNewPincode(String pincode) {
-        System.out.println("AccountManagerBean.setNewPincode()");
-        newPincode = pincode;
+    public void setNewPincode(ValueChangeEvent vce) {
+	System.out.println("AccountManagerBean.setNewPincode()");
+	newPincode = vce.getNewValue().toString();
     }
 
     /**

@@ -31,6 +31,7 @@ public class BankManagerBean {
 	    // als er geen sessie is, fuck dit, log uit    
 	    logUit(-1);
 	}
+	
     }
 
     private void logUit(int i) {
@@ -83,7 +84,7 @@ public class BankManagerBean {
     public String getBeheerderNaam() {
         System.out.println("BankManagerBean.getBeheerderNaam()");
 	// lololol grote subobject boom
-	return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
+	return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName().toString();
     }
     
     	@Override

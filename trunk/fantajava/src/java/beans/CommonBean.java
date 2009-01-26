@@ -9,6 +9,7 @@ public class CommonBean
 	public CommonBean() {
 	    System.out.println("CommonBean()");
 	    String status = AccountManager.getStatus();
+	    System.out.println("accountmanager status = " + AccountManager.getStatus().toString());
 	    bankbusy = (status.equals(AccountManager.ob) || status.equals(AccountManager.cb));
 	    bankclosed = (status.equals(AccountManager.ci) || status.equals(AccountManager.cb));
 	}

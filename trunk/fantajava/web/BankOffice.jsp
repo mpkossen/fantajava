@@ -26,22 +26,33 @@
 	    </div>
 	    <div class="body">
 		
+		
+		
+		
 		<f:subview id="subview-choice">
+		    
+		    <%--
 		    <h:panelGrid id="opnemen" columns="1" rendered="#{TransactionB.getRenderOpnemen}" >
-			<jsp:include page="/fragments/transaction_opnemen.jsp" flush="true" />
+		    <jsp:include page="/fragments/transaction_opnemen.jsp" flush="true" />
+		
 		    </h:panelGrid>
 		    <h:panelGrid id="overboeken" columns="1" rendered="#{TransactionB.getRenderOverboeken}" >
-			<jsp:include page="/fragments/transaction_overboeken.jsp" flush="true" />
-		    </h:panelGrid>
-		    <h:panelGrid id="storten" columns="1" rendered="#{TransactionB.getRenderStorten}" >
-			<jsp:include page="/fragments/transaction_storten.jsp" flush="true" />
-		    </h:panelGrid>
-		    <h:panelGrid id="overzicht" columns="1" rendered="#{TransactionB.getRenderOverzicht}" >
-			<jsp:include page="/fragments/overview-transactions.jsp" flush="true" />
-		    </h:panelGrid>
-		    
-		</f:subview>
+		<jsp:include page="/fragments/transaction_overboeken.jsp" flush="true" />
 		
+		</h:panelGrid>
+		    <h:panelGrid id="storten" columns="1" rendered="#{TransactionB.getRenderStorten}" >
+<jsp:include page="/fragments/transaction_storten.jsp" flush="true" />
+					  
+  </h:panelGrid>
+  
+		    
+		    	
+			<%--<jsp:include page="/fragments/overview-transactions.jsp" flush="true" />--%>
+		
+		    
+		  
+		</f:subview>
+	
 	    </div>
 	</body>
     </html>

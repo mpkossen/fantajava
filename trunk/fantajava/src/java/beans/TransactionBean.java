@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-public class TransactionBean {
+public class TransactionBean extends CommonBean {
 
 	private ExternalContext ex;
 
@@ -21,7 +21,11 @@ public class TransactionBean {
 
 	private String view = "";
 
-	private static boolean[] render = { false, false, false, true };
+	private static boolean[] render = { true, false, false, false };
+	
+	public boolean getRenderOpnemen = false;
+	public boolean getRenderStorten = false;
+	public boolean getRenderOverboeken = false;
 	
 	public TransactionBean() {
             System.out.println("TransactionBean()");
@@ -61,6 +65,7 @@ public class TransactionBean {
 
 	public boolean getRenderStorten() {
             System.out.println("TransactionBean.getRenderStorten()");
+	    
 		return render[0];
 	}
 
