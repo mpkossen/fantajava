@@ -23,7 +23,7 @@ import javax.faces.context.FacesContext;
  */
 public class AccountOfficeBean extends CommonBean
 {
-    private static List<List<String>> transacties; // Temp
+    private static List<List<String>> transacties;
     private static String[] dynamicHeaders;
     private HtmlPanelGroup dynamicDataTableGroup;
 	private AccountOffice accountOffice;
@@ -38,7 +38,7 @@ public class AccountOfficeBean extends CommonBean
 
 	public AccountOfficeBean()
 	{
-            System.out.println("AccountOfficeBean()");
+        System.out.println("AccountOfficeBean()");
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if ( session != null )
 		{
@@ -46,6 +46,7 @@ public class AccountOfficeBean extends CommonBean
 			accountOffice = (AccountOffice) session.getAttribute("accountOffice");
 			if ( accountOffice != null )
 			{
+				loadTransacties();
 				return;
 			}
 		}
