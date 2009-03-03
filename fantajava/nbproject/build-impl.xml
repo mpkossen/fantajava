@@ -530,29 +530,14 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
     <target depends="init" if="dist.ear.dir" name="library-inclusion-in-manifest">
         <basename file="${file.reference.ABC-BANK-JPA.jar}" property="included.lib.file.reference.ABC-BANK-JPA.jar"/>
         <copy-ear-war file="${file.reference.ABC-BANK-JPA.jar}" propname="included.lib.file.reference.ABC-BANK-JPA.jar.X"/>
-        <basename file="${libs.toplink.classpath.libfile.2}" property="included.lib.libs.toplink.classpath.2"/>
-        <basename file="${libs.toplink.classpath.libfile.1}" property="included.lib.libs.toplink.classpath.1"/>
-        <copy-ear-war file="${libs.toplink.classpath.libfile.2}" propname="included.lib.libs.toplink.classpath.2.X"/>
-        <copy-ear-war file="${libs.toplink.classpath.libfile.1}" propname="included.lib.libs.toplink.classpath.1.X"/>
-        <basename file="${file.reference.mysql-connector-java-5.0.8-bin.jar}" property="included.lib.file.reference.mysql-connector-java-5.0.8-bin.jar"/>
-        <copy-ear-war file="${file.reference.mysql-connector-java-5.0.8-bin.jar}" propname="included.lib.file.reference.mysql-connector-java-5.0.8-bin.jar.X"/>
-        <basename file="${file.reference.toplink-essentials-agent.jar}" property="included.lib.file.reference.toplink-essentials-agent.jar"/>
-        <copy-ear-war file="${file.reference.toplink-essentials-agent.jar}" propname="included.lib.file.reference.toplink-essentials-agent.jar.X"/>
-        <basename file="${file.reference.toplink-essentials.jar}" property="included.lib.file.reference.toplink-essentials.jar"/>
-        <copy-ear-war file="${file.reference.toplink-essentials.jar}" propname="included.lib.file.reference.toplink-essentials.jar.X"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.file.reference.ABC-BANK-JPA.jar} ${included.lib.libs.toplink.classpath.1.X} ${included.lib.libs.toplink.classpath.2.X} ${included.lib.file.reference.mysql-connector-java-5.0.8-bin.jar} ${included.lib.file.reference.toplink-essentials-agent.jar} ${included.lib.file.reference.toplink-essentials.jar} "/>
+            <attribute name="Class-Path" value="${included.lib.file.reference.ABC-BANK-JPA.jar} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
         <copy file="${file.reference.ABC-BANK-JPA.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.toplink.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.toplink.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${file.reference.mysql-connector-java-5.0.8-bin.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${file.reference.toplink-essentials-agent.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${file.reference.toplink-essentials.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>
