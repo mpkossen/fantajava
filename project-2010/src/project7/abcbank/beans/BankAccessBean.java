@@ -1,6 +1,5 @@
 package project7.abcbank.beans;
 
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.naming.Context;
@@ -24,7 +23,6 @@ public class BankAccessBean extends EvenMoreCommonBean
 {
 	private String username = null;
 	private String password = null;
-	private String captcha = null;
 
 	protected LoginBeanIF loginBean = null;
 	protected AccountManagerIF accountManager = null;
@@ -173,17 +171,7 @@ public class BankAccessBean extends EvenMoreCommonBean
 	{
 		this.password = password;
 	}
-
-	public String getCaptcha()
-	{
-		return captcha;
-	}
-
-	public void setCaptcha(String captcha)
-	{
-		this.captcha = captcha;
-	}
-
+	
 	/**
 	 * for jaas mycallbackhandler
 	 */

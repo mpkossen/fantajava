@@ -22,13 +22,6 @@
 			<h:inputSecret id="password" value="#{BankAccessBean.password}" required="true" />
 			<h:message styleClass="formError" for="password" />
 
-			<h:outputText value="Captcha" />
-			<h:panelGrid columns="1">
-				<h:graphicImage value="/captcha" style="border: thin solid black" />
-				<h:inputText id="captcha" value="#{BankAccessBean.captcha}" required="true" />
-			</h:panelGrid>
-			<h:message styleClass="formError" for="captcha" />
-
 			<h:outputText value="" />
 			<h:panelGroup>
 				<h:commandButton value="Login" action="#{BankAccessBean.login}"/>
