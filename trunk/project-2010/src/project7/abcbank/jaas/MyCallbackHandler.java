@@ -7,7 +7,6 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
 import project7.abcbank.beans.BankAccessBean;
-import project7.abcbank.jaas.captcha.CaptchaCallback;
 
 
 public class MyCallbackHandler implements CallbackHandler
@@ -29,11 +28,6 @@ public class MyCallbackHandler implements CallbackHandler
 			{
 				BankAccessBeanCallback babc = (BankAccessBeanCallback) callback;
 				babc.setBankAccessBean(bankAccessBean);
-			}
-			else if (callback instanceof CaptchaCallback)
-			{
-				CaptchaCallback cc = (CaptchaCallback) callback;
-				cc.setCaptcha(bankAccessBean.getCaptcha());
 			}
 			else
 			{

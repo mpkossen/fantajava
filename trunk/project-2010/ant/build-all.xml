@@ -23,7 +23,6 @@
 				</fileset>
 			</resources>
 		</sync>
-		<copy file="jcaptcha-all-1.0-RC6.jar" tofile="war/WEB-INF/lib/jcaptcha.jar" />
 		<jar destfile="${application}.war" basedir="war" />
 		<move file="${application}.war" todir="${jboss.deploy}" />
 	</target>

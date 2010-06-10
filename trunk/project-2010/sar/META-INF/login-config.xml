@@ -6,7 +6,6 @@
 	<application-policy name="BankSecurityDomain">
 		<authentication>
 			<login-module flag="required" code="project7.abcbank.jaas.UsernamePasswordLoginModule" />
-			<login-module flag="required" code="project7.abcbank.jaas.captcha.CaptchaLoginModule" />
 		</authentication>
 	</application-policy>
 </policy>
