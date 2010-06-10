@@ -4,7 +4,6 @@ import javax.faces.application.FacesMessage;
 
 import project7.abcbank.ejb.shared.BankException;
 
-
 public class BankStatusBean extends CommonBean
 {
 	private String status;
