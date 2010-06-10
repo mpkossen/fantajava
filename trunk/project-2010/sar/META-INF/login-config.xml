@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policy PUBLIC
+	"-//JBoss//DTD JBOSS Security Config 3.0//EN"
+	"http://www.jboss.org/j2ee/dtd/security_config.dtd">
+<policy>
+	<application-policy name="BankSecurityDomain">
+		<authentication>
+			<login-module flag="required" code="project7.abcbank.jaas.UsernamePasswordLoginModule" />
+			<login-module flag="required" code="project7.abcbank.jaas.captcha.CaptchaLoginModule" />
+		</authentication>
+	</application-policy>
+</policy>
