@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jcaptcha-all-1.0-RC6.jar"/>
+	<classpathentry kind="lib" path="jbossall-client.jar"/>
+	<classpathentry kind="lib" path="jbossweb-service.jar"/>
+	<classpathentry kind="lib" path="jboss-ejb3x.jar"/>
+	<classpathentry kind="lib" path="jboss-annotations-ejb3.jar"/>
+	<classpathentry kind="lib" path="servlet-api.jar"/>
+	<classpathentry kind="lib" path="jsf-api.jar"/>
+	<classpathentry kind="lib" path="el-api.jar"/>
+	<classpathentry kind="lib" path="ejb3-persistence.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,116 @@
+body {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	margin: 0; 
+	padding: 0;
+	text-align: center; 
+	color: #000000;
+}
+.oneColElsCtrHdr #container {
+	width: 60em; 
+	background: #FFFFFF;
+	margin: 0 auto; 
+	border: 1px solid #000000;
+	text-align: left; 
+}
+.oneColElsCtrHdr #header { 
+	background: #0099FF; 
+	padding: 0 10px 0 20px;  
+} 
+.oneColElsCtrHdr #header center {
+	margin: 0; 
+	padding: 10px 0;
+	font-size:40px;
+	
+}	
+.oneColElsCtrHdr #mainContent {
+	padding: 0 20px; 
+	background: #FFFFFF;
+}
+.oneColElsCtrHdr #footer { 
+	padding: 0 10px;
+	background:#0099FF;
+} 
+.oneColElsCtrHdr #footer center {
+	margin: 0;
+	padding: 10px 0; 
+	font-size:28px;
+}
+
+
+#Menu {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #e0e0e0;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #ffffff;
+	border-bottom-color: #e0e0e0;
+	border-left-color: #ffffff;
+	background-color:#CCCCCC;
+	background-repeat: repeat-x;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+#Menu a{
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #999999;
+}
+#Menu a:hover{
+	color: #1E90FF;
+	text-decoration: none;
+}
+
+.formGray {
+	background-color:#CCC;
+	color:#FFF;
+}
+
+.formWhite {
+	background-color:#FFF;
+	color:#CCC;
+}
+
+.bankStatus {
+	background-color:#FFF;
+	color:#063;
+	font-style:italic;
+	font-size:22px;
+}
+
+.formError {
+	background-color:#FFF;
+	color:#F00;
+	font-style:italic;
+	font-size:14px;
+}
+
+.formInformatie {
+	background-color:#FFF;
+	color:#06F;
+}
+
+.accountOfficeSaldo {
+	background-color:#FFF;
+	color:#063;
+	font-size:18px;
+}
+
+.greenColor {
+	background-color:#FFF;
+	color:#063;
+	font-style:italic;
+	font-size:14px;
+}

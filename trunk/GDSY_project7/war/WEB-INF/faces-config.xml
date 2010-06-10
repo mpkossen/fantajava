@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd" version="1.2">
+
+	<!-- Session beans -->
+	<managed-bean>
+		<managed-bean-name>BankAccessBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.BankAccessBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>AccountManagerBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.AccountManagerBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>AccountOfficeBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.AccountOfficeBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- Request beans -->
+	<!-- |- AccountManager beans -->
+	<managed-bean>
+		<managed-bean-name>CheckAccountBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.CheckAccountBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>NewAccountBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.NewAccountBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>BankStatusBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.BankStatusBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<!-- |- AccountOffice beans -->
+	<managed-bean>
+		<managed-bean-name>DepositBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.DepositBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>TransferBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.TransferBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>WithdrawBean</managed-bean-name>
+		<managed-bean-class>team2.abcbank.beans.WithdrawBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<!-- Navigatie -->
+	<!-- Stuur de gebruiker na het uitloggen terug naar BankAccess -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{BankAccessBean.logout}</from-action>
+			<from-outcome>logoutOutcome</from-outcome>
+			<to-view-id>/BankAccess.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Stuur de gebruiker terug naar AccountOffice als ie probeert uit te loggen met nog pending transactions -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{BankAccessBean.logout}</from-action>
+			<from-outcome>transactionLeft</from-outcome>
+			<to-view-id>/AccountOffice.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Stuur de gebruiker na het inloggen door naar zijn eigen afdeling, of terug indien een fout -->
+	<navigation-rule>
+		<from-view-id>/BankAccess.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>loginError</from-outcome>
+			<to-view-id>/BankAccess.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/BankAccess.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>loggedInAsAccountOffice</from-outcome>
+			<to-view-id>/AccountOffice.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/BankAccess.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>loggedInAsAccountManager</from-outcome>
+			<to-view-id>/AccountManager.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>
