@@ -29,7 +29,6 @@ import project7.abcbank.ejb.shared.AccountOfficeIF;
 import project7.abcbank.ejb.shared.BankException;
 import project7.abcbank.ejb.shared.TransactionData;
 
-
 @Stateful(name = "AccountOfficeBean")
 @Remote(AccountOfficeIF.class)
 //@RolesAllowed("AccountOffice")
