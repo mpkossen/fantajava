@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<servlet-class>team2.abcbank.jaas.captcha.CaptchaServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<url-pattern>/captcha</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- JAAS zaken -->
+	<!-- standaard deny from all -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>All</web-resource-name>
+			<url-pattern>/</url-pattern>
+		</web-resource-collection>
+		<auth-constraint />
+	</security-constraint>
+
+	<!-- allow style.css etc. -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>AllowedFiles</web-resource-name>
+			<url-pattern>*.css</url-pattern>
+			<url-pattern>*.html</url-pattern>
+			<url-pattern>*.js</url-pattern>
+			<url-pattern>/captcha</url-pattern>
+		</web-resource-collection>
+	</security-constraint>
+
+	<!-- allow BankAccess / Account(Manager|Office) -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BankAccess</web-resource-name>
+			<url-pattern>/BankAccess.faces</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint id="ConfidentialTransportConstraint">
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>AccountManager</web-resource-name>
+			<url-pattern>/AccountManager.faces</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint id="ConfidentialTransportConstraint">
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+		<auth-constraint>
+			<role-name>AccountManager</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>AccountOffice</web-resource-name>
+			<url-pattern>/AccountOffice.faces</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint id="ConfidentialTransportConstraint">
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+		<auth-constraint>
+			<role-name>AccountOffice</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- dynamic logon -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/BankAccess.faces</form-login-page>
+			<form-error-page>/BankAccess.faces</form-error-page>
+		</form-login-config>
+	</login-config>
+	<session-config>
+		<session-timeout>15</session-timeout><!-- in minuten -->
+	</session-config>
+	<security-role>
+		<description>AccountManager role can manage the entire application</description>
+		<role-name>AccountManager</role-name>
+	</security-role>
+	<security-role>
+		<description>AccountOffice role can manage their own account only</description>
+		<role-name>AccountOffice</role-name>
+	</security-role>
+	<!-- // JAAS zaken -->
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/index.html</location>
+	</error-page>
+
+	<jsp-property-group>
+		<url-pattern>*.jsp</url-pattern>
+		<el-ignored>false</el-ignored>
+		<scripting-invalid>true</scripting-invalid>
+	</jsp-property-group>
+
+	<ejb-ref>
+		<ejb-ref-name>LoginBeanRef</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<home/>
+		<remote>team2.abcbank.ejb.shared.LoginBeanIF</remote>
+	</ejb-ref>
+	<ejb-ref>
+		<ejb-ref-name>AccountManagerRef</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<home/>
+		<remote>team2.abcbank.ejb.shared.AccountManagerIF</remote>
+	</ejb-ref>
+	<ejb-ref>
+		<ejb-ref-name>AccountOfficeRef</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<home/>
+		<remote>team2.abcbank.ejb.shared.AccountOfficeIF</remote>
+	</ejb-ref>
+</web-app>
