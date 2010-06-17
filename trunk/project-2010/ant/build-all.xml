@@ -20,6 +20,7 @@
 				<fileset dir="bin">
 					<include name="project7/abcbank/beans/**" />
 					<include name="project7/abcbank/jaas/**" />
+					<include name="project7/abcbank/ejb/shared/**" />
 				</fileset>
 			</resources>
 		</sync>
