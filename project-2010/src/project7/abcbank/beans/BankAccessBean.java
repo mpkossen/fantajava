@@ -63,24 +63,7 @@ public class BankAccessBean extends EvenMoreCommonBean
 	public String logout()
 	{
 		System.out.println("BankAccessBean.logout()");
-		// zie jboss-web.xml : flushOnSessionInvalidation
-		// dat zorgt dat logout() op de loginmodules gecalled wordt
-		// en alle rechten weer netjes ingetrokken worden
-		if (false)
-		{
-			try
-			{
-				if (accountOffice.getPendingTransactions(accountNumber).length > 0)
-				{
-					addMessage(FacesMessage.SEVERITY_ERROR, "Kan niet uitloggen als er nog transacties open staan.");
-					return "transactionLeft";
-				}
-			}
-			catch (BankException e)
-			{
-				e.printStackTrace();
-			}
-		}
+		
 		HttpSession session = (HttpSession) getExternalContext().getSession(false);
 		if (session != null)
 		{

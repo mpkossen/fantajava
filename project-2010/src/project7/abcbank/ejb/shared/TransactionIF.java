@@ -4,14 +4,6 @@ import java.util.Calendar;
 
 import project7.abcbank.ejb.entities.Account;
 
-
-/**
- * Entity!
- * 
- * @author ejvos
- * 
- *         FM @16-3: methodes getTransactionID en setTransactionID toegevoegd.
- */
 public interface TransactionIF
 {
 	public long getTransactionID();

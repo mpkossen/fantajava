@@ -26,8 +26,6 @@ import project7.abcbank.ejb.shared.*;
 
 @Stateless(name = "LoginBean")
 @Remote(LoginBeanIF.class)
-//@DeclareRoles({"guest"})
-//@PermitAll
 public class LoginBean implements LoginBeanIF, Serializable
 {
 	@Resource(mappedName = "ConnectionFactory")

@@ -5,11 +5,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * data object
- * 
- * @author ejvos
- */
 public class TransactionData implements Serializable
 {
 	private long toAccount = -1;

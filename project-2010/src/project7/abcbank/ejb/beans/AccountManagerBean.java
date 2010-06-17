@@ -24,8 +24,6 @@ import project7.abcbank.ejb.shared.TransactionData;
 
 @Stateless(name = "AccountManagerBean")
 @Remote(AccountManagerIF.class)
-//@RolesAllowed("AccountManager")
-//@DeclareRoles({"AccountManager"})
 public class AccountManagerBean implements AccountManagerIF, Serializable
 {
 	@PersistenceContext(unitName = "ABC-BANK")

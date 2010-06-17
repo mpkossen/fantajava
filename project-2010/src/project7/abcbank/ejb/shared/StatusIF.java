@@ -1,10 +1,5 @@
 package project7.abcbank.ejb.shared;
 
-/**
- * Entity!
- * 
- * @author ejvos
- */
 public interface StatusIF
 {
 	public int getStatusID();

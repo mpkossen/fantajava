@@ -2,11 +2,6 @@ package project7.abcbank.ejb.shared;
 
 import project7.abcbank.ejb.entities.Account;
 
-/**
- * Entity!
- * 
- * @author ejvos
- */
 public interface AccountIF extends UserIF
 {
 	public long getAccountNumber();

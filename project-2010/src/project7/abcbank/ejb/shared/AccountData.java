@@ -1,12 +1,6 @@
 package project7.abcbank.ejb.shared;
 
 import java.io.Serializable;
-
-/**
- * data object
- * 
- * @author ejvos
- */
 public class AccountData implements Serializable
 {
 	private String username = null;

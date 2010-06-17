@@ -50,7 +50,7 @@ public class AccountOfficeBean extends CommonBean
 	}
 
 	/**
-	 * aarg, ugly but that's JSF allright
+	 * beetje lelijk, maargoed dat is JSF
 	 */
 	public static TransactionTableEntry[] convertToTransactionTableEntry(TransactionData[] data)
 	{

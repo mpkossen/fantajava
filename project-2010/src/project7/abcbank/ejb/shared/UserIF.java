@@ -1,10 +1,5 @@
 package project7.abcbank.ejb.shared;
 
-/**
- * Alvast afgesplitst voor als dat toch blijkt te moeten.
- * 
- * @author ejvos
- */
 public interface UserIF
 {
 	public String getUsername();
