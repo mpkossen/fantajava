@@ -31,8 +31,6 @@ import project7.abcbank.ejb.shared.TransactionData;
 
 @Stateful(name = "AccountOfficeBean")
 @Remote(AccountOfficeIF.class)
-//@RolesAllowed("AccountOffice")
-//@DeclareRoles({"AccountOffice"})
 public class AccountOfficeBean implements AccountOfficeIF, Serializable
 {
 	@PersistenceContext(name = "ABC-BANK")
@@ -97,14 +95,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 			QueueSender sender = session.createSender(jmsTransactionQueue);
 
 			ObjectMessage message;
-			// EJ: send a batch of transactions instead
-			// Iterator<TransactionData> i = pendingTransactionQueue.iterator();
-			// while (i.hasNext())
-			// {
-			// message = session.createObjectMessage();
-			// message.setObject(i.next());
-			// sender.send(message);
-			// }
+
 			message = session.createObjectMessage();
 			message.setObject(pendingTransactionQueue.toArray(new TransactionData[0]));
 			sender.send(message);

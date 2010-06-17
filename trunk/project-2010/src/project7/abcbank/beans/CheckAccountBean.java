@@ -18,7 +18,6 @@ public class CheckAccountBean extends CommonBean
 	/**
 	 * Retrieves information about the account and its transactions
 	 * 
-	 * @author Reinier Kip
 	 * @throws BankException
 	 */
 	public void check() throws BankException

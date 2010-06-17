@@ -19,7 +19,6 @@ import project7.abcbank.ejb.shared.TransactionIF;
  * Each instance of this class represents a transaction between two accounts or on one account. If both relations are set it's a transaction between two accounts. If only one relation is set then it's
  * a transaction on a single account. If the fromAccount-relation is set it's a withdrawal. And if the toAccount-relation is set it's a deposit.
  * 
- * @author kalizec
  */
 @Entity
 @Table(name = "transaction")
@@ -91,8 +90,6 @@ public class Transaction implements TransactionIF, Serializable
 	}
 
 	/**
-	 * FM @ 17-3 : TODO: Add check for alteration.
-	 * 
 	 * Sets the FromAccount for this transaction. If the fromAccount equals null and toAccount doesn't equal null then it is considered a deposit.
 	 * 
 	 * @param fromAccount the account the amount should be subtracted from
@@ -116,8 +113,6 @@ public class Transaction implements TransactionIF, Serializable
 	}
 
 	/**
-	 * FM @ 17-3 : TODO: Add check for alteration.
-	 * 
 	 * Sets the ToAccount for this transaction. If the toAccount equals null and fromAccount doesn't equal null then it is considered a withdrawal.
 	 * 
 	 * @param toAccount the account the amount should be subtracted from

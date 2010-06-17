@@ -23,7 +23,6 @@ public class MD5
 
 	public static byte[] hash(String w)
 	{
-		// System.out.println("MD5.hash("+w+")");
 		md5.reset();
 		md5.update(w.getBytes());
 		return md5.digest();
@@ -31,7 +30,6 @@ public class MD5
 
 	public static String encode(byte[] md)
 	{
-		// System.out.println("MD5.encode("+md+")");
 		String ret = "";
 		for (int i = 0; i < md.length; i++)
 		{
@@ -39,13 +37,11 @@ public class MD5
 			char c2 = code.charAt(md[i] & 0x0F);
 			ret += c1 + "" + c2;
 		}
-		// System.out.println(ret);
 		return ret;
 	}
 
 	public static byte[] decode(String s)
 	{
-		// System.out.println("MD5.decode("+s+")");
 		byte[] ret = new byte[s.length() / 2];
 		for (int i = 0; i < s.length(); i += 2)
 		{
