@@ -36,6 +36,7 @@ public class TransactionManager implements MessageListener
 	@Override
 	public void onMessage(Message message)
 	{
+		System.out.println("onMessage: " + message);
 		TransactionData[] batch = null;
 		try
 		// Try to convert the message to a transactionbatch
@@ -57,6 +58,7 @@ public class TransactionManager implements MessageListener
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	private void doTransactionBatch(TransactionData[] batch)
 	{
+		System.out.println("doTransactionBatch");
 		try
 		{
 			for (TransactionData data : batch)
@@ -80,12 +82,14 @@ public class TransactionManager implements MessageListener
 	 */
 	private boolean transactionIsValid(TransactionData td)
 	{
+		System.out.println("transactionIsValid");
 		return (td.getFromAccount() >= 0 || td.getToAccount() >= 0) && td.getFromAccount() != td.getToAccount() && td.getAmount() > 0 && td.getTransactionCreatedTime() != null;
 	}
 
 	@TransactionAttribute(TransactionAttributeType.MANDATORY)
 	private void doTransaction(TransactionData td) throws BankException
 	{
+		System.out.println("doTransaction");
 		// Create a new Transaction entity and copy some values
 		Transaction transaction = new Transaction();
 		transaction.setAmount(td.getAmount());

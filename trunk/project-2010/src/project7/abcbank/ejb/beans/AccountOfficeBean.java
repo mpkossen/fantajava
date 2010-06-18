@@ -47,6 +47,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	@Override
 	public void deposit(long accountNumber, long amountInCents) throws BankException
 	{
+		System.out.println("deposit: " + accountNumber + " " + amountInCents);
 		if (amountInCents <= 0)
 			throw new BankException("Requested amount should be more than 0.");
 
@@ -66,6 +67,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	@Override
 	public AccountData getDetails(long accountNumber) throws BankException
 	{
+		System.out.println("getDetails: " + accountNumber);
 		AccountIF account = Account.getByAccountNumber(em, accountNumber);
 		if (account == null)
 			throw new BankException("account does not exist");
@@ -82,12 +84,14 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	@Override
 	public TransactionData[] getPendingTransactions(long accountNumber) throws BankException
 	{
+		System.out.println("getPendingTransactions: " + accountNumber);
 		return pendingTransactionQueue.toArray(new TransactionData[0]);
 	}
 
 	@Override
 	public void sync(long accountNumber) throws BankException
 	{
+		System.out.println("sync: " + accountNumber);
 		try
 		{
 			QueueConnection connection = jmsQueueFactory.createQueueConnection();
@@ -111,6 +115,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	@Override
 	public void transfer(long fromAccountNumber, long toAccountNumber, long amountInCents) throws BankException
 	{
+		System.out.println("transfer " + amountInCents + " from " + fromAccountNumber + " to " + toAccountNumber);
 		if (amountInCents <= 0)
 			throw new BankException("Request amount should be more than 0.");
 		if (fromAccountNumber == toAccountNumber)
@@ -138,6 +143,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	@Override
 	public void withdraw(long accountNumber, long amountInCents) throws BankException
 	{
+		System.out.println("withdraw " + amountInCents + " from " + accountNumber);
 		if (amountInCents <= 0)
 			throw new BankException("Request amount should be more than 0.");
 		AccountIF account = Account.getByAccountNumber(em, accountNumber);
@@ -163,6 +169,7 @@ public class AccountOfficeBean implements AccountOfficeIF, Serializable
 	 */
 	private long getNewBalance(AccountIF account) throws BankException
 	{
+		System.out.println("getNewBalance " + account);
 		long newBalance = account.getBalance();
 		Iterator<TransactionData> i = pendingTransactionQueue.iterator();
 		TransactionData data;

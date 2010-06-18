@@ -44,7 +44,7 @@ public class LoginBean implements LoginBeanIF, Serializable
 //	@PermitAll
 	public boolean getBankIsOpen() throws BankException
 	{
-//		System.out.println("######" + sc.getCallerPrincipal());
+		System.out.println("getBankIsOpen");
 		try
 		{
 			Status status = Status.getSingleStatus(em);
@@ -99,6 +99,7 @@ public class LoginBean implements LoginBeanIF, Serializable
 //	@PermitAll
 	public boolean getTransactionManagerIsIdle() throws BankException
 	{
+		System.out.println("getTransactionManagersIsIdle");
 		try
 		{
 			QueueConnection connection = queueFactory.createQueueConnection();
@@ -121,6 +122,10 @@ public class LoginBean implements LoginBeanIF, Serializable
 //	@PermitAll
 	public AccountData login(String username, String password, long salt) throws BankException
 	{
+		System.out.println("login");
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(salt);
 		Account account = Account.getByUsername(em, username);
 		Status status = Status.getSingleStatus(em);
 		if (account == null)

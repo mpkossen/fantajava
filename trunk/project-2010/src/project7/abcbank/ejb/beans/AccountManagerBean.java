@@ -32,6 +32,7 @@ public class AccountManagerBean implements AccountManagerIF, Serializable
 	@Override
 	public AccountData getAccount(long accountNumber) throws BankException
 	{
+		System.out.println("getAccount: " + accountNumber);
 		AccountIF a = Account.getByAccountNumber(em, accountNumber);
 		if (a == null)
 			throw new BankException("could not find an account with this number");
@@ -46,6 +47,7 @@ public class AccountManagerBean implements AccountManagerIF, Serializable
 	@Override
 	public TransactionData[] getTransactions(long accountNumber) throws BankException
 	{
+		System.out.println("getTransactions: " + accountNumber);
 		Account a = Account.getByAccountNumber(em, accountNumber);
 		if (a == null)
 			throw new BankException("could not find an account with this number");
@@ -69,6 +71,7 @@ public class AccountManagerBean implements AccountManagerIF, Serializable
 	@Override
 	public void newAccountManager(String username, String password) throws BankException
 	{
+		System.out.println("new Account Manager: " + username + " with password: " + password);
 		if (username == null || password == null)
 			throw new BankException("no null values please");
 		Account old = Account.getByUsername(em, username);
@@ -87,6 +90,7 @@ public class AccountManagerBean implements AccountManagerIF, Serializable
 	@Override
 	public AccountData newAccountOffice(long limitInCents, String username, String password) throws BankException
 	{
+		System.out.println("newAccountOffice: " + username + " with password " + password + " and limit " + limitInCents);
 		if (username == null || password == null)
 			throw new BankException("no null values please");
 		if (limitInCents < 0)
@@ -110,6 +114,7 @@ public class AccountManagerBean implements AccountManagerIF, Serializable
 	@Override
 	public void setOpen(boolean bankIsOpen) throws BankException
 	{
+		System.out.println("setOpen: " + bankIsOpen);
 		Status status = Status.getSingleStatus(em);
 		status.setBankIsOpen(bankIsOpen);
 		em.merge(status);
