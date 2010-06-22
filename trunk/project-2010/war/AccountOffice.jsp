@@ -6,7 +6,7 @@
     
 	<h:outputText styleClass="accountOfficeSaldo" value="Uw huidig saldo: #{AccountOfficeBean.balance}" /> 
     
-	<div id="Menu">
+	<div id="menu">
 		<h:form id="nav">
 			<h:commandLink actionListener="#{AccountOfficeBean.setSubview}" value="Geld opnemen">
 				<f:attribute name="to" value="Withdraw" />
@@ -18,7 +18,7 @@
 				<f:attribute name="to" value="Deposit" />
 			</h:commandLink>
 		</h:form>
-	<!-- end#Menu --></div>
+	<!-- end#menu --></div>
 	<jsp:include page="#{AccountOfficeBean.subview}" />
 	<jsp:include page="parts/Footer.jsp" />
 </f:view>

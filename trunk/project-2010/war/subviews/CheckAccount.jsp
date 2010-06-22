@@ -27,12 +27,12 @@
 	</h:form>
     
 	<h:panelGroup rendered="#{CheckAccountBean.checkingAccount}">
-		<h3>Accountnaam:</h3> <h:outputText value="#{CheckAccountBean.name}" />
-		<h3>Accountnummer:</h3> <h:outputText value="#{CheckAccountBean.accountnumber}" />
-		<h3>Balans:</h3><h:outputText value="#{CheckAccountBean.balance}" />
-        <h3>Limiet:</h3><h:outputText value="#{CheckAccountBean.limit}" />
-		<h3>Transacties:</h3>
-		<h:dataTable value="#{CheckAccountBean.transactions}" var="t" cellpadding="1" cellspacing="1" border="1">
+		<span class="bold">Accountnaam:</span> <h:outputText value="#{CheckAccountBean.name}" />
+		<span class="bold">Accountnummer:</span> <h:outputText value="#{CheckAccountBean.accountnumber}" />
+		<span class="bold">Balans:</span><h:outputText value="#{CheckAccountBean.balance}" />
+        <span class="bold">Limiet:</span><h:outputText value="#{CheckAccountBean.limit}" />
+		<span class="bold">Transacties:</span>
+		<h:dataTable value="#{CheckAccountBean.transactions}" var="t" cellpadding="1" cellspacing="1" styleClass="overview" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Van" /></f:facet>
 				<h:outputText value="#{t.from}" />

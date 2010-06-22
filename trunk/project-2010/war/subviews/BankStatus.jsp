@@ -16,7 +16,7 @@
        </tr>
 		<tr>
 			<td colspan="2">
-		   <h:selectOneRadio value="#{BankStatusBean.status}" border="1" layout= "pageDirection"> 
+		   <h:selectOneRadio value="#{BankStatusBean.status}" layout= "pageDirection"> 
 		   <f:selectItem itemValue =	"open" itemLabel = 		"ABC Bank is open" />
 		   <f:selectItem itemValue =	"closed" itemLabel = 	"ABC Bank is closed" />
 		   </h:selectOneRadio>
