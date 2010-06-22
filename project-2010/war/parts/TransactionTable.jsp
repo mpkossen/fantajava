@@ -3,7 +3,7 @@
 
 	<h:panelGroup rendered="#{AccountOfficeBean.hasPendingTransactions}">
 		<h4>Openstaande transacties</h4>
-		<h:dataTable value="#{AccountOfficeBean.pendingTransactions}" var="t" cellpadding="1" cellspacing="1" border="1">
+		<h:dataTable value="#{AccountOfficeBean.pendingTransactions}" var="t" cellpadding="1" cellspacing="1" styleClass="overview" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Van" /></f:facet>
 				<h:outputText value="#{t.from}" />

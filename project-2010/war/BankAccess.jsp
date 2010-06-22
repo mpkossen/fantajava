@@ -10,11 +10,11 @@
 		<fieldset>
         
 		<h:panelGrid columns="3">
-			<h:outputText style="color:#006400" value="Status" />
+			<h:outputText value="Status" />
 			<h:outputText styleClass="bankStatus" value="#{BankAccessBean.bankStatus}" />
 			<h:outputText value="" />
 
-			<h:outputText value="AccountNr" />
+			<h:outputText value="Account" />
 			<h:inputText id="username" value="#{BankAccessBean.username}" required="true"/>
 			<h:message styleClass="formError" for="username" />
 
