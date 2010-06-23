@@ -12,7 +12,7 @@
 		<sleep seconds="5"/>
 	</target>
 
-	<target name="ejb" depends="sar">
+	<target name="ejb">
 		<sync todir="ejb">
 			<resources>
 				<fileset dir="bin">
