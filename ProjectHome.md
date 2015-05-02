@@ -1,0 +1,1 @@
+<img src='http://www.mccullagh.org/db9/1ds2-4/capitol-building-inauguration-bleachers.jpg'>
